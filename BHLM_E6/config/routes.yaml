@@ -4,6 +4,6 @@ controllers:
         namespace: App\Controller
     type: attribute
 
-bonjour:
-        path: /bonjour
-        controller: App\Controller\BonjourController::bonjour
+connexion:
+        path: /connexion
+        controller: App\Controller\ConnexionController::connexion
