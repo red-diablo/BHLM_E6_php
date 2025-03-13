@@ -4,6 +4,12 @@ controllers:
         namespace: App\Controller
     type: attribute
 
+#route de la page connexion 
 connexion:
         path: /connexion
         controller: App\Controller\ConnexionController::connexion
+
+#route de la page d acceuil 
+accueil:
+        path: /accueil 
+        controller: App\Controller\AccueilController::accueil 
