@@ -1,12 +1,12 @@
 <?php
-
 namespace App\Entity;
 
 use App\Repository\UtilisateurRepository;
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Security\Core\User\PasswordAuthenticatedUserInterface;
 
 #[ORM\Entity(repositoryClass: UtilisateurRepository::class)]
-class Utilisateur
+class Utilisateur implements PasswordAuthenticatedUserInterface
 {
     #[ORM\Id]
     #[ORM\GeneratedValue]
@@ -16,7 +16,7 @@ class Utilisateur
     #[ORM\Column(length: 20)]
     private ?string $login = null;
 
-    #[ORM\Column(length: 20)]
+    #[ORM\Column(length: 1000)]
     private ?string $mdp = null;
 
     public function getId(): ?int
@@ -47,4 +47,18 @@ class Utilisateur
 
         return $this;
     }
+
+    // Implémentation de PasswordAuthenticatedUserInterface
+    public function getPassword(): ?string
+    {
+        return $this->mdp;
+    }
+
+    // Ajout de getSalt() pour respecter l'interface PasswordAuthenticatedUserInterface
+    public function getSalt(): ?string
+    {
+        // Pas de salt utilisé ici, retourne null
+        return null;
+    }
 }
+?>
