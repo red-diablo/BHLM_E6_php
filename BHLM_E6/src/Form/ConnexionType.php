@@ -1,5 +1,5 @@
-<!-- FORMULAIRE DE CONNEXION QUAND ON AURA CREER LES ENTITES
-namespace App\Formulaire;
+<?php
+namespace App\Form;
 
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
@@ -13,6 +13,7 @@ class ConnexionType extends AbstractType {
     {
         $builder->add('login', TextType :: class, ['label' => 'Login'])
         ->add('password', PasswordType :: class, ['label' => 'Mot de passe'])
-        ->add ('submit', SubmitType :: class, ['label' => 'Se connecter'])
+        ->add ('submit', SubmitType :: class, ['label' => 'Se connecter']);
     }
-} -->
+}
+?>
