@@ -1,41 +1,47 @@
 <?php
 namespace App\Controller;
 
-use App\Entity\Utilisateur;
-use App\Formulaire\ConnexionType;
-use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
+use App\Entity\Utilisateur;
+use App\Form\ConnexionType;
 use Symfony\Component\Routing\Annotation\Route;
-use Symfony\Component\Security\Http\Authentication\AuthenticationUtils;
+use Doctrine\Persistence\ManagerRegistry;
+use Symfony\Component\PasswordHasher\Hasher\UserPasswordHasherInterface;
 
-    class ConnexionController extends AbstractController
+class ConnexionController extends AbstractController
+{
+    public function appelConnexionForm(Request $request, ManagerRegistry $doctrine, UserPasswordHasherInterface $passwordHasher): Response
     {
-        #[Route ('/connexion')]
-        public function appelConnexionForm(Request $request, EntityManagerInterface $entityManager)
-        {
-             $utilisateur = new Utilisateur();
-             $connexionForm = $this->createForm(ConnexionType :: class, $utilisateur);
-             $connexionForm->handleRequest($request);
+        $form = $this->createForm(ConnexionType::class);
+        $form->handleRequest($request);
 
-            if ($connexionForm->isSubmitted() && $connexionForm->isValid()) 
+        if ($form->isSubmitted() && $form->isValid()) {
+            $data = $form->getData();
+            $login = $data['login'];  // Le login soumis
+            $password = $data['password'];  // Le mot de passe soumis (en texte brut)
+
+            $entityManager = $doctrine->getManager();
+
+            // Recherche de l'utilisateur dans la base de données
+            $user = $entityManager->getRepository(Utilisateur::class)->findOneBy(['login' => $login]);
+
+            // Vérification du mot de passe
+            if ($user && $passwordHasher->isPasswordValid($user, $password)) {
+                return $this->redirectToRoute('accueil');
+            } 
+            else 
             {
-                // Chercher l'utilisateur en base de données
-                $repo = $entityManager->getRepository(Utilisateur::class);
-                $user = $repo->findOneBy(['login' => $utilisateur->getLogin()]);
-                if ($user && password_verify($utilisateur->getMdp(), $user->getMdp())) {
-                    // Connexion réussie, rediriger vers la page d'accueil (liste des entreprises)
-                    return $this->redirectToRoute('accueil');
-                }
-                else {
-                    return $this->render('connexion.html.twig', ['connexionForm'=> $connexionForm->createView()]);
-                }
+                // Ajoute un message d'erreur si les identifiants sont incorrects
+                $this->addFlash('error', 'Identifiants incorrects');
             }
-            else
-            {
-                return $this->render('connexion.html.twig', ['connexionForm'=> $connexionForm->createView()]);
-            }
-         }
+        }
+
+        return $this->render('base.html.twig', [
+            'titreDeLaPage' => "Connexion",
+            'connexionForm' => $form->createView()
+        ]);
     }
+}
 ?>

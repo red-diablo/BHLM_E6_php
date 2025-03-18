@@ -4,10 +4,10 @@ namespace App\Entity;
 
 use App\Repository\UtilisateurRepository;
 use Doctrine\ORM\Mapping as ORM;
-
+use Symfony\Component\Security\Core\User\PasswordAuthenticatedUserInterface;
 
 #[ORM\Entity(repositoryClass: UtilisateurRepository::class)]
-class Utilisateur
+class Utilisateur implements PasswordAuthenticatedUserInterface
 {
     #[ORM\Id]
     #[ORM\GeneratedValue]
@@ -17,8 +17,14 @@ class Utilisateur
     #[ORM\Column(length: 20)]
     private ?string $login = null;
 
-    #[ORM\Column(length: 20)]
+    #[ORM\Column(length: 255)]
     private ?string $mdp = null;
+
+    #[ORM\Column]
+    private ?int $administrateur = null;
+
+    #[ORM\Column]
+    private ?int $personnel = null;
 
     public function getId(): ?int
     {
@@ -47,5 +53,33 @@ class Utilisateur
         $this->mdp = $mdp;
 
         return $this;
+    }
+
+    public function getAdministrateur(): ?int
+    {
+        return $this->administrateur;
+    }
+
+    public function setAdministrateur(int $administrateur): static
+    {
+        $this->administrateur = $administrateur;
+
+        return $this;
+    }
+
+    public function getPersonnel(): ?int
+    {
+        return $this->personnel;
+    }
+
+    public function setPersonnel(int $personnel): static
+    {
+        $this->personnel = $personnel;
+
+        return $this;
+    }
+    public function getPassword(): string
+    {
+        return $this->mdp;
     }
 }
