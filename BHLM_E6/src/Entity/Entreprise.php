@@ -30,12 +30,19 @@ class Entreprise
     /**
      * @var Collection<int, Employe>
      */
-    #[ORM\OneToMany(targetEntity: Employe::class, mappedBy: 'Id_Entreprise')]
-    private Collection $id_tuteur;
+    #[ORM\OneToMany(targetEntity: Employe::class, mappedBy: 'idEntreprise')]
+    private Collection $employes;
+
+    /**
+     * @var Collection<int, Etudiant>
+     */
+    #[ORM\ManyToMany(targetEntity: Etudiant::class, mappedBy: 'entreprises')]
+    private Collection $etudiants;
 
     public function __construct()
     {
-        $this->id_tuteur = new ArrayCollection();
+        $this->employes = new ArrayCollection();
+        $this->etudiants = new ArrayCollection();
     }
 
     public function getId(): ?int
@@ -94,28 +101,55 @@ class Entreprise
     /**
      * @return Collection<int, Employe>
      */
-    public function getIdTuteur(): Collection
+    public function getEmployes(): Collection
     {
-        return $this->id_tuteur;
+        return $this->employes;
     }
 
-    public function addIdTuteur(Employe $idEmploye): static
+    public function addEmployes(Employe $idEmploye): static
     {
-        if (!$this->id_tuteur->contains($idEmploye)) {
-            $this->id_tuteur->add($idEmploye);
-            $idEmploye->setIdEntreprise($this);
+        if (!$this->employes->contains($idEmploye)) {
+            $this->employes->add($idEmploye);
+            $idEmploye->setidEntreprise($this);
         }
 
         return $this;
     }
 
-    public function removeIdTuteur(Employe $idEmploye): static
+    public function removeEmployes(Employe $idEmploye): static
     {
-        if ($this->id_tuteur->removeElement($idEmploye)) {
+        if ($this->employes->removeElement($idEmploye)) {
             // set the owning side to null (unless already changed)
-            if ($idEmploye->getIdEntreprise() === $this) {
-                $idEmploye->setIdEntreprise(null);
+            if ($idEmploye->getidEntreprise() === $this) {
+                $idEmploye->setidEntreprise(null);
             }
+        }
+
+        return $this;
+    }
+
+    /**
+     * @return Collection<int, Etudiant>
+     */
+    public function getEtudiants(): Collection
+    {
+        return $this->etudiants;
+    }
+
+    public function addEtudiant(Etudiant $etudiant): static
+    {
+        if (!$this->etudiants->contains($etudiant)) {
+            $this->etudiants->add($etudiant);
+            $etudiant->addEntreprise($this);
+        }
+
+        return $this;
+    }
+
+    public function removeEtudiant(Etudiant $etudiant): static
+    {
+        if ($this->etudiants->removeElement($etudiant)) {
+            $etudiant->removeEntreprise($this);
         }
 
         return $this;

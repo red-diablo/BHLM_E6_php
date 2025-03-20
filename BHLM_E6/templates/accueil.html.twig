@@ -1,37 +1,57 @@
 {# <!DOCTYPE html>
-    <html lang="fr">
-    <head>
-        <meta charset="UTF-8">
-        <link rel="stylesheet" href="styles.css">
-    </head> #}
-    
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Description de votre site">
+    <meta name="author" content="Votre Nom">
+    <title>Accueil</title>
+    <link rel="stylesheet" href="styles.css">
+</head> #}
 
-    <h2>{{ titreDeLaPage }}</h2>
-{# tableau d information des entreprise  #}
+<h2>Bienvenue sur le site complémentaire de la Chataigneraie !</h2>
+<h3>Ici, vous pouvez voir la liste des entreprises qui peuvent prendre des stagiaires</h3>
 
-    <table >
-        {#  entete du tableau   #}
+<button><a href="{{ path('ajout') }}">Ajouter</a></button>
+
+<table>
+    <thead>
         <tr>
-            <td>Nom entreprise</td>
-            <td>ville</td>
-            <td>personne identifier</td>
-            <td>fonction</td>
-            <td>profils</td>
-            <td>jury</td>
-            <td>SPécialité de predilection</td>
-           
-            
-            
-        <tr>
-            {# donné (a rendre dynamique )  #}
-        <tr>
-            <td>chatos</td>
-            <td>mesnil</td>
-            <td>bloyet</td>
-            <td>prof</td>
-            <td>sisr</td>
-            <td>2025</td>
-            <td>sisr</td>
-        <tr>
-        
-    </table>
+            <th>Nom de l'entreprise</th>
+            <th>Ville</th>
+            <th>Tuteurs</th>
+            <th>Profils</th>
+            <th>Etudiants</th>
+            <th>Jury</th>
+            <th>Spécialité de prédilection</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for entreprise in listeEntreprise %}
+            <tr>
+                <td>{{ entreprise.nom }}</td>
+                <td>
+                    {{ entreprise.adresse }}<br>
+                    {{ entreprise.cp }} {{ entreprise.ville }}
+                </td>
+                <td>
+                    {% for employe in entreprise.employes %}
+                    <br>
+                        {{ employe.nom }} {{ employe.prenom }}<br>
+                        {{ employe.fonction }}<br>
+                        {{ employe.mail }}<br>
+                        {{ employe.tel }}<br>
+                    {% endfor %}
+                </td>
+                <td>  </td>
+                <td>
+                    {% for etudiant in entreprise.etudiants %}
+                    <br>
+                        {{ etudiant.nom }} {{ etudiant.prenom}} en {{ etudiant.bts }} {{ etudiant.specialite }}<br>
+                        Année du stage : {{ etudiant.annee }}
+                    {% endfor %}
+                </td>
+            </tr>
+        {% endfor %}
+    </tbody>
+</table>

@@ -20,7 +20,7 @@ class Employe
     #[ORM\Column(length: 100)]
     private ?string $prenom = null;
 
-    #[ORM\Column(length: 100)]
+    #[ORM\Column(length: 100, nullable: true)]
     private ?string $fonction = null;
 
     #[ORM\Column(length: 100, nullable: true)]
@@ -29,9 +29,9 @@ class Employe
     #[ORM\Column(length: 20, nullable: true)]
     private ?string $tel = null;
 
-    #[ORM\ManyToOne(inversedBy: 'id_employe')]
+    #[ORM\ManyToOne(inversedBy: 'employes')]
     #[ORM\JoinColumn(nullable: false)]
-    private ?Entreprise $Id_Entreprise = null;
+    private ?Entreprise $idEntreprise = null;
 
     public function getId(): ?int
     {
@@ -100,12 +100,12 @@ class Employe
 
     public function getIdEntreprise(): ?Entreprise
     {
-        return $this->Id_Entreprise;
+        return $this->idEntreprise;
     }
 
-    public function setIdEntreprise(?Entreprise $Id_Entreprise): static
+    public function setIdEntreprise(?Entreprise $idEntreprise): static
     {
-        $this->Id_Entreprise = $Id_Entreprise;
+        $this->idEntreprise = $idEntreprise;
 
         return $this;
     }

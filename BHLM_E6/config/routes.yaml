@@ -9,7 +9,12 @@ connexion:
         path: /connexion
         controller: App\Controller\ConnexionController::appelConnexionForm
 
-#route de la page d acceuil 
+#route de la page d'acceuil 
 accueil:
         path: /accueil 
         controller: App\Controller\AccueilController::Accueil 
+
+#route de la page d'ajout d'entreprise
+ajout:
+        path: /ajout
+        controller: App\Controller\AjoutController::appelFormAjout
