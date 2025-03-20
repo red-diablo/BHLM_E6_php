@@ -2,32 +2,22 @@
 
 namespace App\Repository;
 
-use App\Entity\Entreprise;
+use App\Entity\Etudiant;
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
 use Doctrine\Persistence\ManagerRegistry;
 
 /**
- * @extends ServiceEntityRepository<Entreprise>
+ * @extends ServiceEntityRepository<Etudiant>
  */
-class EntrepriseRepository extends ServiceEntityRepository
+class EtudiantRepository extends ServiceEntityRepository
 {
     public function __construct(ManagerRegistry $registry)
     {
-        parent::__construct($registry, Entreprise::class);
-    }
-
-    public function findAllWithEmployeEtudiant() {
-        return $this->createQueryBuilder('e')
-            ->leftJoin('e.employes', 'em')
-            ->addSelect('em')
-            ->leftJoin('e.etudiants', 'et')
-            ->addSelect('et')
-            ->getQuery()
-            ->getResult();
+        parent::__construct($registry, Etudiant::class);
     }
 
     //    /**
-    //     * @return Entreprise[] Returns an array of Entreprise objects
+    //     * @return Etudiant[] Returns an array of Etudiant objects
     //     */
     //    public function findByExampleField($value): array
     //    {
@@ -41,7 +31,7 @@ class EntrepriseRepository extends ServiceEntityRepository
     //        ;
     //    }
 
-    //    public function findOneBySomeField($value): ?Entreprise
+    //    public function findOneBySomeField($value): ?Etudiant
     //    {
     //        return $this->createQueryBuilder('e')
     //            ->andWhere('e.exampleField = :val')
