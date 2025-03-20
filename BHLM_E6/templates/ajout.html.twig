@@ -12,3 +12,7 @@
 <h2>Ajouter une entreprise</h2>
 
 {{ form(ajoutEntreprise) }}
+
+{% for message in app.flashes('success') %}
+    {{ message }}
+{% endfor %}

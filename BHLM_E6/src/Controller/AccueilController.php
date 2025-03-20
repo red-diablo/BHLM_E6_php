@@ -11,7 +11,7 @@ use Symfony\Component\HttpFoundation\Response;
         public function Accueil(ManagerRegistry $doctrine)
         {
             $entityManager = $doctrine->getManager();
-            //met dans un tableau les données d'entreprise et sa relation avec employes
+            //Met dans un tableau les données des entreprises et des employés
             $listeEntreprise = $entityManager->getRepository(Entreprise::class)->findAllWithEmployeEtudiant();
             return $this->render('accueil.html.twig', ['listeEntreprise' => $listeEntreprise]);
         }
