@@ -1,4 +1,5 @@
 <?php
+
 namespace App\Entity;
 
 use App\Repository\UtilisateurRepository;
@@ -16,8 +17,14 @@ class Utilisateur implements PasswordAuthenticatedUserInterface
     #[ORM\Column(length: 20)]
     private ?string $login = null;
 
-    #[ORM\Column(length: 1000)]
+    #[ORM\Column(length: 255)]
     private ?string $mdp = null;
+
+    #[ORM\Column]
+    private ?int $administrateur = null;
+
+    #[ORM\Column]
+    private ?int $personnel = null;
 
     public function getId(): ?int
     {
@@ -48,17 +55,31 @@ class Utilisateur implements PasswordAuthenticatedUserInterface
         return $this;
     }
 
-    // Implémentation de PasswordAuthenticatedUserInterface
-    public function getPassword(): ?string
+    public function getAdministrateur(): ?int
+    {
+        return $this->administrateur;
+    }
+
+    public function setAdministrateur(int $administrateur): static
+    {
+        $this->administrateur = $administrateur;
+
+        return $this;
+    }
+
+    public function getPersonnel(): ?int
+    {
+        return $this->personnel;
+    }
+
+    public function setPersonnel(int $personnel): static
+    {
+        $this->personnel = $personnel;
+
+        return $this;
+    }
+    public function getPassword(): string
     {
         return $this->mdp;
     }
-
-    // Ajout de getSalt() pour respecter l'interface PasswordAuthenticatedUserInterface
-    public function getSalt(): ?string
-    {
-        // Pas de salt utilisé ici, retourne null
-        return null;
-    }
 }
-?>
