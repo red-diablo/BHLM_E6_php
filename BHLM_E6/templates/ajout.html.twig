@@ -9,10 +9,10 @@
     <link rel="stylesheet" href="styles.css">
 </head> #}
 
-<h2>Bonjour, connectez-vous</h2>
+<h2>Ajouter une entreprise</h2>
 
-{{ form(connexionForm) }}
+{{ form(ajoutEntreprise) }}
 
-{% for message in app.flashes('error') %}
-<p>{{ message }}</p>
+{% for message in app.flashes('success') %}
+    {{ message }}
 {% endfor %}
