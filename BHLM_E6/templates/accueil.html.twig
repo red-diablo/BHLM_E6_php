@@ -12,13 +12,20 @@
 <h2>Bienvenue sur le site complémentaire de la Chataigneraie !</h2>
 <h3>Ici, vous pouvez voir la liste des entreprises qui peuvent prendre des stagiaires</h3>
 
+<p>Nombre total d'entreprises : {{ listeEntreprise|length }}</p>
+
 <button><a href="{{ path('ajout') }}">Ajouter</a></button>
 
 <table>
     <thead>
         <tr>
-            <th>Nom de l'entreprise</th>
-            <th>Ville</th>
+            <th>
+                <a href="{{ path(app.request.attributes.get('_route'), {tri: 'nom', ordre: tri == 'nom' and ordre == 'asc' ? 'desc' : 'asc'}) }}">Nom de l'entreprise</a>
+            </th>
+            <th>
+                <a href="{{ path(app.request.attributes.get('_route'), {tri: 'ville',ordre: tri == 'ville' and ordre == 'asc' ? 'desc' : 'asc'}) }}">Ville</a>
+            </th>
+            <th>Secteur d'activité</th>
             <th>Tuteurs</th>
             <th>Profils</th>
             <th>Etudiants</th>
@@ -34,6 +41,7 @@
                     {{ entreprise.adresse }}<br>
                     {{ entreprise.cp }} {{ entreprise.ville }}
                 </td>
+                <td>{{ entreprise.secteurActivite.nom }}</td>
                 <td>
                     {% for employe in entreprise.employes %}
                     <br>

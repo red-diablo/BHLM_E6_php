@@ -39,6 +39,9 @@ class Entreprise
     #[ORM\ManyToMany(targetEntity: Etudiant::class, mappedBy: 'entreprises')]
     private Collection $etudiants;
 
+    #[ORM\ManyToOne(inversedBy: 'entreprises')]
+    private ?SecteurActivite $SecteurActivite = null;
+
     public function __construct()
     {
         $this->employes = new ArrayCollection();
@@ -151,6 +154,18 @@ class Entreprise
         if ($this->etudiants->removeElement($etudiant)) {
             $etudiant->removeEntreprise($this);
         }
+
+        return $this;
+    }
+
+    public function getSecteurActivite(): ?SecteurActivite
+    {
+        return $this->SecteurActivite;
+    }
+
+    public function setSecteurActivite(?SecteurActivite $SecteurActivite): static
+    {
+        $this->SecteurActivite = $SecteurActivite;
 
         return $this;
     }
