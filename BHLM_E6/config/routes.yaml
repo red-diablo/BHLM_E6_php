@@ -14,7 +14,32 @@ accueil:
         path: /accueil 
         controller: App\Controller\AccueilController::Accueil 
 
-#route de la page d'ajout d'entreprise
+#route de la page vers les liens d'ajout
 ajout:
         path: /ajout
-        controller: App\Controller\AjoutController::appelFormAjout
+        controller: App\Controller\AjoutController::Lien
+
+#route de la page d'ajout d'entreprise
+ajoutEntreprise:
+        path: /ajoutEntreprise
+        controller: App\Controller\AjoutEntrepriseController::appelFormAjout
+
+#route de la page d'ajout d'employés
+ajoutEmploye:
+        path: /ajoutEmploye
+        controller: App\Controller\AjoutEmployeController::appelFormAjout
+
+#route de la page d'ajout d'étudiant
+ajoutEtudiant:
+        path: /ajoutEtudiant
+        controller: App\Controller\AjoutEtudiantController::appelFormAjout
+
+#route confirmation de l'ajout étudiant et redirection pour associer l'étudiant ou non à une entreprise
+ajoutConfirmation:
+        path: /confirmation
+        controller: App\Controller\AjoutEtudiantConfirmationController::Confirmation
+
+#route d'association étudiant entreprise
+assoEtudiantEntreprise:
+        path: /assoEtudiantEntreprise
+        controller: App\Controller\AssociationEtudiantEntrepriseController::appelFormAjout

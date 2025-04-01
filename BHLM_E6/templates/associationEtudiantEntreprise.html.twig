@@ -1,0 +1,9 @@
+<h2>Associer un étudiant à une entreprise où celui-ci a déjà effectuer un stage là-bas</h2>
+
+{{ form(associationForm) }}
+
+{% for message in app.flashes('success') %}
+    <div class="alert alert-success">
+        {{ message }}
+    </div>
+{% endfor %}
