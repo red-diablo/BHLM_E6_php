@@ -1,0 +1,46 @@
+header {
+  background-color: white;
+  color: #333;
+  padding: 1rem;
+  text-align: center;
+}
+
+body {
+  font-family: Arial, sans-serif;
+  background-color: lightgray;
+  color: #333;
+}
+
+h1, h2, h3 {
+  color: #333;
+}
+
+a {
+  color: #0097A7;
+}
+a:hover {
+  color: #007c89;
+}
+
+.btn-custom {
+  background-color: #0097A7;
+  border-color: #0097A7;
+  color: #333;
+}
+.btn-custom:hover {
+  background-color: #007c89;
+  border-color: #007c89;
+}
+
+footer {
+  background-color: #36363b;
+  color: white;
+  text-align: center;
+  padding: 1rem;
+  margin-top: 3rem;
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  left: 0;
+  right: 0;
+}
