@@ -17,7 +17,7 @@ class Employe
     #[ORM\Column(length: 100)]
     private ?string $nom = null;
 
-    #[ORM\Column(length: 100)]
+    #[ORM\Column(length: 100, nullable: true)]
     private ?string $prenom = null;
 
     #[ORM\Column(length: 100, nullable: true)]
