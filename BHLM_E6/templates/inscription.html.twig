@@ -1,0 +1,7 @@
+<h2>Créer votre compte :</h2>
+
+{{ form(inscriptionForm) }}
+
+{% for message in app.flashes('success') %}
+    {{ message }}
+{% endfor %}
