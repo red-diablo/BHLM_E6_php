@@ -43,3 +43,8 @@ ajoutConfirmation:
 assoEtudiantEntreprise:
         path: /assoEtudiantEntreprise
         controller: App\Controller\AssociationEtudiantEntrepriseController::appelFormAjout
+
+#route vers la page d'inscription
+inscription:
+        path: /inscription
+        controller: App\Controller\InscriptionController::appelForm

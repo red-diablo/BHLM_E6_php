@@ -25,16 +25,16 @@ class Etudiant
     private ?int $annee = null;
 
     #[ORM\Column(length: 10)]
-    private ?string $bts = null;
-
-    #[ORM\Column(length: 4)]
-    private ?string $specialite = null;
+    private ?string $bts = 'BTS SIO';
 
     /**
      * @var Collection<int, Entreprise>
      */
     #[ORM\ManyToMany(targetEntity: Entreprise::class, inversedBy: 'etudiants')]
     private Collection $entreprises;
+
+    #[ORM\ManyToOne(inversedBy: 'etudiants')]
+    private ?Specialite $specialite = null;
 
     public function __construct()
     {
@@ -94,18 +94,6 @@ class Etudiant
         return $this;
     }
 
-    public function getSpecialite(): ?string
-    {
-        return $this->specialite;
-    }
-
-    public function setSpecialite(string $specialite): static
-    {
-        $this->specialite = $specialite;
-
-        return $this;
-    }
-
     /**
      * @return Collection<int, Entreprise>
      */
@@ -126,6 +114,18 @@ class Etudiant
     public function removeEntreprise(Entreprise $entreprise): static
     {
         $this->entreprises->removeElement($entreprise);
+
+        return $this;
+    }
+
+    public function getSpecialite(): ?Specialite
+    {
+        return $this->specialite;
+    }
+
+    public function setSpecialite(?Specialite $specialite): static
+    {
+        $this->specialite = $specialite;
 
         return $this;
     }
