@@ -28,6 +28,9 @@ class ConnexionController extends AbstractController
 
             // Vérification du mot de passe
             if ($user && $passwordHasher->isPasswordValid($user, $password)) {
+                $session = $request->getSession();
+                $session->set('user_id', $user->getId());
+                $session->set('user_role', $user->getAdministrateur());
                 return $this->redirectToRoute('accueil');
             } 
             else 

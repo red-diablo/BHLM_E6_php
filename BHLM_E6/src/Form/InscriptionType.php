@@ -17,7 +17,7 @@ class InscriptionType extends AbstractType {
         ->add('login', TextType :: class, ['label' => 'Login*'])
         ->add('mdp', PasswordType :: class, ['label' => 'Mot de passe*'])
         ->add ('submit', SubmitType :: class, ['label' => 'Valider'])
-        ->add('cancel', ButtonType::class, ['label' => 'Annuler','attr' => ['onclick' => 'window.location.href="' . '/ajout' . '"']]);
+        ->add('cancel', ButtonType::class, ['label' => 'Annuler','attr' => ['onclick' => 'window.location.href="' . '/connexion' . '"']]);
     }
 }
 

@@ -48,3 +48,8 @@ assoEtudiantEntreprise:
 inscription:
         path: /inscription
         controller: App\Controller\InscriptionController::appelForm
+
+#route pour la déconnexion de l'utilisateur
+deconnexion:
+    path: /deconnexion
+    controller: App\Controller\DeconnexionController::deconnexion
