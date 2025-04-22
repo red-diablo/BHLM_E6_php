@@ -6,7 +6,7 @@ controllers:
 
 #route de la page connexion 
 connexion:
-        path: /connexion
+        path: /
         controller: App\Controller\ConnexionController::appelConnexionForm
 
 #route de la page d'acceuil 
@@ -18,6 +18,15 @@ accueil:
 ajout:
         path: /ajout
         controller: App\Controller\AjoutController::Lien
+#route de la page modification 
+modif:
+        path: /modif
+        controller: App\Controller\ModifController::appelFormModif
+#route de la page suppression
+suppr:
+        path: /suppr
+        controller: App\Controller\SuppressionController::appelFormSuppression
+
 
 #route de la page d'ajout d'entreprise
 ajoutEntreprise:
