@@ -6,7 +6,7 @@ controllers:
 
 #route de la page connexion 
 connexion:
-        path: /connexion
+        path: /
         controller: App\Controller\ConnexionController::appelConnexionForm
 
 #route de la page d'acceuil 
