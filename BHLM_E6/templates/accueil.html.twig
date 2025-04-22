@@ -9,12 +9,22 @@
     <link rel="stylesheet" href="styles.css">
 </head> #}
 
-<h2>Bienvenue sur le site complémentaire de la Chataigneraie !</h2>
+{% if user %}
+    <a href="{{ path('deconnexion') }}" class="btn btn-danger">Déconnexion</a>
+{% endif %}
+
+{% if user %}
+    <h2>Bienvenue {{ user.prenom }} ({{ user.login }}) sur le site complémentaire de la Chataigneraie !</h2>
+{% endif %}
 <h3>Ici, vous pouvez voir la liste des entreprises qui peuvent prendre des stagiaires</h3>
 
 <p>Nombre total d'entreprises : {{ listeEntreprise|length }}</p>
 
-<button><a href="{{ path('ajout') }}">Ajouter</a></button>
+{#<p>User Role: {{ userRole }}</p>#}
+
+{% if userRole == 1 %}
+    <a href="{{ path('ajout') }}" class="btn btn-primary">Ajouter</a>
+{% endif %}
 
 <table>
     <thead>
