@@ -4,6 +4,8 @@ namespace App\Entity;
 
 use App\Repository\EmployeRepository;
 use App\Repository\TuteurRepository;
+use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 
 #[ORM\Entity(repositoryClass: EmployeRepository::class)]
@@ -32,6 +34,17 @@ class Employe
     #[ORM\ManyToOne(inversedBy: 'employes')]
     #[ORM\JoinColumn(nullable: false)]
     private ?Entreprise $idEntreprise = null;
+
+    /**
+     * @var Collection<int, SessionExam>
+     */
+    #[ORM\ManyToMany(targetEntity: SessionExam::class, mappedBy: 'jury')]
+    private Collection $SessionExam;
+
+    public function __construct()
+    {
+        $this->SessionExam = new ArrayCollection();
+    }
 
     public function getId(): ?int
     {
@@ -106,6 +119,33 @@ class Employe
     public function setIdEntreprise(?Entreprise $idEntreprise): static
     {
         $this->idEntreprise = $idEntreprise;
+
+        return $this;
+    }
+
+    /**
+     * @return Collection<int, SessionExam>
+     */
+    public function getSessionExam(): Collection
+    {
+        return $this->SessionExam;
+    }
+
+    public function addSessionExam(SessionExam $sessionExam): static
+    {
+        if (!$this->SessionExam->contains($sessionExam)) {
+            $this->SessionExam->add($sessionExam);
+            $sessionExam->addJury($this);
+        }
+
+        return $this;
+    }
+
+    public function removeSessionExam(SessionExam $sessionExam): static
+    {
+        if ($this->SessionExam->removeElement($sessionExam)) {
+            $sessionExam->removeJury($this);
+        }
 
         return $this;
     }
