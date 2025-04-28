@@ -1,3 +1,8 @@
 <p> Êtes-vous sûr de vouloir supprimer ?</p>
 
-<p><button><a href="{{ path('ajout') }}">oui entreprise</a></button> <button><a href="{{ path('accueil') }}">non entreprise</a></button> </p>
+
+<form method="post" action="{{ path('suppr_confirm', {id: entreprise.id}) }}">
+    <input type="hidden" name="_token" value="{{ csrf_token('suppr_confirm' ~ entreprise.id) }}">
+    <button class="btn btn-danger">Oui, supprimer</button>
+    <a href="{{ path('accueil') }}" class="btn btn-secondary">Annuler</a>
+</form>

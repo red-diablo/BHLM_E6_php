@@ -23,9 +23,18 @@ modif:
         path: /modif
         controller: App\Controller\ModifController::appelFormModif
 #route de la page suppression
+# route pour afficher la page de confirmation
 suppr:
-        path: /suppr
-        controller: App\Controller\SuppressionController::appelFormSuppression
+    path: /suppr/{id}
+    controller: App\Controller\SuppressionController::appelFormSuppression
+    methods: [GET]
+
+# route pour valider et exécuter la suppression
+suppr_confirm:
+    path: /suppr/suppression/{id}
+    controller: App\Controller\SuppressionController::suppression
+    methods: [POST]
+
 
 
 #route de la page d'ajout d'entreprise
