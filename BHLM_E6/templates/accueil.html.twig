@@ -1,65 +1,66 @@
-{# <!DOCTYPE html>
-<html lang="fr">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Description de votre site">
-    <meta name="author" content="Votre Nom">
-    <title>Accueil</title>
-    <link rel="stylesheet" href="styles.css">
-</head> #}
+{% extends 'base.html.twig' %}
 
-<h2>Bienvenue sur le site complémentaire de la Chataigneraie !</h2>
-<h3>Ici, vous pouvez voir la liste des entreprises qui peuvent prendre des stagiaires</h3>
+{% block title %}Accueil{% endblock %}
+
+{% block body %}
+<div class="text-center">
+  <h2>Bienvenue sur le site complémentaire de la Châtaigneraie !</h2>
+  <h3>Ici, vous pouvez voir la liste des entreprises qui peuvent prendre des stagiaires</h3>
+</div>
 
 <p>Nombre total d'entreprises : {{ listeEntreprise|length }}</p>
 
-<button><a href="{{ path('ajout') }}">Ajouter</a></button>
+<div class="text-center">
+  <button><a href="{{ path('ajout') }}">Ajouter</a></button>
+</div>
 
-<table>
+<div class="table-responsive">
+  <table class="table table-striped table-hover">
     <thead>
-        <tr>
-            <th>
-                <a href="{{ path(app.request.attributes.get('_route'), {tri: 'nom', ordre: tri == 'nom' and ordre == 'asc' ? 'desc' : 'asc'}) }}">Nom de l'entreprise</a>
-            </th>
-            <th>
-                <a href="{{ path(app.request.attributes.get('_route'), {tri: 'ville',ordre: tri == 'ville' and ordre == 'asc' ? 'desc' : 'asc'}) }}">Ville</a>
-            </th>
-            <th>Secteur d'activité</th>
-            <th>Tuteurs</th>
-            <th>Profils</th>
-            <th>Etudiants</th>
-            <th>Jury</th>
-            <th>Spécialité de prédilection</th>
-        </tr>
+      <tr>
+        <th>
+          <a href="{{ path(app.request.attributes.get('_route'), {tri: 'nom', ordre: tri == 'nom' and ordre == 'asc' ? 'desc' : 'asc'}) }}">Nom de l'entreprise</a>
+        </th>
+        <th>
+          <a href="{{ path(app.request.attributes.get('_route'), {tri: 'ville', ordre: tri == 'ville' and ordre == 'asc' ? 'desc' : 'asc'}) }}">Ville</a>
+        </th>
+        <th>Secteur d'activité</th>
+        <th>Tuteurs</th>
+        <th>Profils</th>
+        <th>Etudiants</th>
+        <th>Jury</th>
+        <th>Spécialité de prédilection</th>
+      </tr>
     </thead>
     <tbody>
-        {% for entreprise in listeEntreprise %}
-            <tr>
-                <td>{{ entreprise.nom }}</td>
-                <td>
-                    {{ entreprise.adresse }}<br>
-                    {{ entreprise.cp }} {{ entreprise.ville }}
-                </td>
-                <td>{{ entreprise.secteurActivite.nom }}</td>
-                <td>
-                    {% for employe in entreprise.employes %}
-                    <br>
-                        {{ employe.nom }} {{ employe.prenom }}<br>
-                        {{ employe.fonction }}<br>
-                        {{ employe.mail }}<br>
-                        {{ employe.tel }}<br>
-                    {% endfor %}
-                </td>
-                <td>  </td>
-                <td>
-                    {% for etudiant in entreprise.etudiants %}
-                    <br>
-                        {{ etudiant.nom }} {{ etudiant.prenom}} en {{ etudiant.bts }} {{ etudiant.specialite }}<br>
-                        Année du stage : {{ etudiant.annee }}
-                    {% endfor %}
-                </td>
-            </tr>
-        {% endfor %}
+      {% for entreprise in listeEntreprise %}
+      <tr>
+        <td>{{ entreprise.nom }}</td>
+        <td>
+          {{ entreprise.adresse }}<br>
+          {{ entreprise.cp }} {{ entreprise.ville }}
+        </td>
+        <td>{{ entreprise.secteurActivite.nom }}</td>
+        <td>
+          {% for employe in entreprise.employes %}
+            {{ employe.nom }} {{ employe.prenom }}<br>
+            {{ employe.fonction }}<br>
+            {{ employe.mail }}<br>
+            {{ employe.tel }}<br><br>
+          {% endfor %}
+        </td>
+        <td> <!-- Pas encore rempli --> </td>
+        <td>
+          {% for etudiant in entreprise.etudiants %}
+            {{ etudiant.nom }} {{ etudiant.prenom }} - {{ etudiant.bts }} {{ etudiant.specialite }}<br>
+            Année : {{ etudiant.annee }}<br><br>
+          {% endfor %}
+        </td>
+        <td> <!-- Pas encore rempli --> </td>
+        <td> <!-- Pas encore rempli --> </td>
+      </tr>
+      {% endfor %}
     </tbody>
-</table>
+  </table>
+</div>
+{% endblock %}

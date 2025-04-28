@@ -6,7 +6,7 @@
   <div class="row justify-content-center">
     <div class="col-md-6">
       <div class="card shadow">
-        <div class="card-body">
+        <div class="card-body card-connnexion">
           <h2 class="mb-4 text-center">Connexion</h2>
 
           {{ form_start(connexionForm) }}
@@ -22,8 +22,13 @@
             }) }}
 
             {{ form_row(connexionForm.submit, {
-              attr: {'class': 'btn btn-custom w-100 mt-3'}
+              attr: {'class': 'btn btn-connexion btn-primary mt-3'},
             }) }}
+
+            <button class="btn-connexion btn-primary mt-3">
+            {# <a href="{{ path('inscription') }}" class="btn btn-link mt-3">Créer un compte</a> #}
+            Créer un compte
+            </button>
 
           {{ form_end(connexionForm) }}
 
