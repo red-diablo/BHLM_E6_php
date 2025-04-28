@@ -31,11 +31,11 @@ class SuppressionController extends AbstractController
     
             // Supprimer l'entreprise
             $entityManager->remove($entreprise);
-            $entityManager->flush();
+            $entityManager->flush();    
     
-           
+            
         } else {
-            $this->addFlash('impossible de supprimer l entreprise .');
+            $this->addFlash('impossible de supprimer.');
         }
 
         return $this->redirectToRoute('accueil');
