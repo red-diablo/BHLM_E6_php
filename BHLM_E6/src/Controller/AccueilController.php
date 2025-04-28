@@ -1,6 +1,7 @@
 <?php
 namespace App\Controller;
 
+use App\Entity\SessionExam;
 use App\Entity\Utilisateur;
 use App\Entity\Entreprise;
 use Doctrine\Persistence\ManagerRegistry;
@@ -24,11 +25,13 @@ use Symfony\Component\Security\Core\User\UserInterface;
             $entityManager = $doctrine->getManager();
             $user = $entityManager->getRepository(Utilisateur::class)->find($userId);
 
-            $entityManager = $doctrine->getManager();
             $entrepriseRepository = $entityManager->getRepository(Entreprise::class);
             $listeEntreprise = $entrepriseRepository->findBy([], [$tri => $ordre]); 
 
-            return $this->render('accueil.html.twig', ['listeEntreprise' => $listeEntreprise, 'tri' => $tri, 'ordre' => $ordre, 'user' => $user, 'userRole' => $userRole]);
+            $sessionExamRepository = $entityManager->getRepository(SessionExam::class);
+            $listeSessionExam = $sessionExamRepository->findAll();
+
+            return $this->render('accueil.html.twig', ['listeEntreprise' => $listeEntreprise, 'tri' => $tri, 'ordre' => $ordre, 'user' => $user, 'userRole' => $userRole, 'listeSessionExam' => $listeSessionExam]);
         }
 
     }

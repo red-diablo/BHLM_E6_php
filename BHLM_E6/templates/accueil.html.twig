@@ -16,8 +16,13 @@
 {% if user %}
     <h2>Bienvenue {{ user.prenom }} ({{ user.login }}) sur le site complémentaire de la Chataigneraie !</h2>
 {% endif %}
-<h3>Ici, vous pouvez voir la liste des entreprises qui peuvent prendre des stagiaires</h3>
+{% if userRole == 1 %}
+    <h3>Vous êtes connecté en tant qu'administrateur, vous pouvez donc ajouter, modifier ou supprimer une entreprise qui peut prendre des stagiaires dans cette liste</h3>
+{% endif %}
 
+{% if userRole == 0 %}
+    <h3>Ici, vous pouvez voir la liste des entreprises qui peuvent prendre des stagiaires</h3>
+{% endif %}
 <p>Nombre total d'entreprises : {{ listeEntreprise|length }}</p>
 
 {#<p>User Role: {{ userRole }}</p>#}
@@ -40,7 +45,6 @@
             <th>Profils</th>
             <th>Etudiants</th>
             <th>Jury</th>
-            <th>Spécialité de prédilection</th>
         </tr>
     </thead>
     <tbody>
@@ -54,19 +58,28 @@
                 <td>{{ entreprise.secteurActivite.nom }}</td>
                 <td>
                     {% for employe in entreprise.employes %}
-                    <br>
-                        {{ employe.nom }} {{ employe.prenom }}<br>
+                        {{ employe.nom }} {{ employe.prenom }}
                         {{ employe.fonction }}<br>
                         {{ employe.mail }}<br>
                         {{ employe.tel }}<br>
                     {% endfor %}
                 </td>
-                <td>  </td>
-                <td>
+                {#<td>
+                    profils recherchés par les entreprises
+                </td>#}                <td>
                     {% for etudiant in entreprise.etudiants %}
                     <br>
-                        {{ etudiant.nom }} {{ etudiant.prenom}} en {{ etudiant.bts }} {{ etudiant.specialite }}<br>
+                        {{ etudiant.nom }} {{ etudiant.prenom}} en {{ etudiant.bts }} {{ etudiant.specialite.nom }}<br>
                         Année du stage : {{ etudiant.annee }}
+                    {% endfor %}
+                </td>
+                <td>
+                    {% for session in listeSessionExam %}
+                        {% for employe in session.jury %}
+                            {% if employe in entreprise.employes %}
+                                {{ employe.prenom }} {{ employe.nom }} est ok pour être jury en {{ session.mois }} {{ session.annee }} {{ session.specialite }}
+                            {% endif %}
+                        {% endfor %}
                     {% endfor %}
                 </td>
             </tr>
