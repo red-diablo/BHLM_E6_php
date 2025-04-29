@@ -20,14 +20,19 @@ ajout:
         controller: App\Controller\AjoutController::Lien
 #route de la page modification 
 modif:
-        path: /modif
+        path: /modif{id}
         controller: App\Controller\ModifController::appelFormModif
+        methods: [GET]
+
+
+
 #route de la page suppression
-# route pour afficher la page de confirmation
+# route pour supprimer 
 suppr:
         path: /suppr/{id}
         controller: App\Controller\SuppressionController::appelFormSuppression
         methods: [GET]
+
 
 # route pour valider et exécuter la suppression
 supprConfirm:
@@ -65,8 +70,3 @@ assoEtudiantEntreprise:
 inscription:
         path: /inscription
         controller: App\Controller\InscriptionController::appelForm
-
-#route pour la déconnexion de l'utilisateur
-deconnexion:
-    path: /deconnexion
-    controller: App\Controller\DeconnexionController::deconnexion
