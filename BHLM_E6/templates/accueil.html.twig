@@ -31,6 +31,9 @@
   <table class="table table-striped table-hover">
     <thead>
         <tr>
+            {% if userRole == 1 %}
+                <th>Modification/Suppression</th>
+            {% endif %}
             <th>
                 <a href="{{ path(app.request.attributes.get('_route'), {tri: 'nom', ordre: tri == 'nom' and ordre == 'asc' ? 'desc' : 'asc'}) }}">Nom de l'entreprise</a>
             </th>
@@ -47,9 +50,11 @@
     <tbody>
         {% for entreprise in listeEntreprise %}
             <tr>
+                {% if userRole == 1 %}
                 <td><button><a href="{{ path('modif') }}">Modification</a>
                 </button> <button><a href="{{ path('suppr',{ id: entreprise.id }) }}">suppression</a></button> 
-               </td>
+                </td>
+                {% endif %}
 
                 <td>{{ entreprise.nom }}</td>
                 <td>
@@ -65,9 +70,12 @@
                         {{ employe.tel }}<br>
                     {% endfor %}
                 </td>
-                {#<td>
-                    profils recherchés par les entreprises
-                </td>#}                <td>
+                <td>
+                    {% for profil in entreprise.profils %}
+                        {{ profil.information }} {{ profil.optionFormation}}
+                    {% endfor %}
+                </td>                
+                <td>
                     {% for etudiant in entreprise.etudiants %}
                     <br>
                         {{ etudiant.nom }} {{ etudiant.prenom}} en {{ etudiant.bts }} {{ etudiant.specialite.nom }}<br>
