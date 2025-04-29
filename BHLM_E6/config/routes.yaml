@@ -20,9 +20,8 @@ ajout:
         controller: App\Controller\AjoutController::Lien
 #route de la page modification 
 modif:
-        path: /modif{id}
+        path: /modif
         controller: App\Controller\ModifController::appelFormModif
-        methods: [GET]
 
 
 
@@ -70,3 +69,9 @@ assoEtudiantEntreprise:
 inscription:
         path: /inscription
         controller: App\Controller\InscriptionController::appelForm
+
+
+#route pour la déconnexion de l'utilisateur
+deconnexion:
+    path: /deconnexion
+    controller: App\Controller\DeconnexionController::deconnexion
