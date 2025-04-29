@@ -40,7 +40,7 @@ class ConnexionController extends AbstractController
             }
         }
 
-        return $this->render('base.html.twig', [
+        return $this->render('connexion.html.twig', [
             'titreDeLaPage' => "Connexion",
             'connexionForm' => $form->createView()
         ]);
