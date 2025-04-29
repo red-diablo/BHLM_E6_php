@@ -15,5 +15,25 @@ class ModifController extends AbstractController
     {
         return $this->render('modif.html.twig');
     }
+
+    public function Modification(Request $request, Entreprise $entreprise, EntityManagerInterface $entityManager): Response
+    {
+        if ($this->isCsrfTokenValid('suppr_confirm' . $entreprise->getId(), $request->request->get('_token'))) {
+            // Supprimer tous les employés liés à cette entreprise
+            foreach ($entreprise->getEmployes() as $employe) {
+                $entityManager->remove($employe);
+            }
+    
+            // Supprimer l'entreprise
+            $entityManager->remove($entreprise);
+            $entityManager->flush();    
+    
+            
+        } else {
+            $this->addFlash('impossible de supprimer.');
+        }
+
+        return $this->redirectToRoute('accueil');
+    }
 }
 ?>
