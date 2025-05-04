@@ -50,10 +50,9 @@
     <tbody>
         {% for entreprise in listeEntreprise %}
             <tr>
-                <td><button><a href="{{ path('modif') }}">Modification</a>
+                <td><button><a href="{{ path('modif',{ id: entreprise.id }) }}">Modification</a>
                 </button> <button><a href="{{ path('suppr',{ id: entreprise.id }) }}">suppression</a></button> 
                </td>
-
                 <td>{{ entreprise.nom }}</td>
                 <td>
                     {{ entreprise.adresse }}<br>

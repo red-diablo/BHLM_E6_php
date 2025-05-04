@@ -20,8 +20,9 @@ ajout:
         controller: App\Controller\AjoutController::Lien
 #route de la page modification 
 modif:
-        path: /modif
+        path: /modif{id}
         controller: App\Controller\ModifController::appelFormModif
+        methods: [GET]
 
 
 
@@ -42,7 +43,7 @@ supprConfirm:
 
 #route de la page d'ajout d'entreprise
 ajoutEntreprise:
-        path: /ajoutEntreprise
+        path: /ajoutEntreprise{id}
         controller: App\Controller\AjoutEntrepriseController::appelFormAjout
 
 #route de la page d'ajout d'employés
