@@ -1,0 +1,179 @@
+header {
+  background-color: white;
+  color: #333;
+  padding: 1rem;
+  text-align: center;
+}
+
+header .logo {
+  max-height: 80px;
+  height: auto;
+}
+
+body {
+  font-family: Arial, sans-serif;
+  background-color: lightgray;
+  color: #333;
+}
+
+h1, h2, h3 {
+  color: #333;
+}
+
+a {
+  color: #0097A7;
+}
+a:hover {
+  color: #007c89;
+}
+
+/* INTEGRATION DU LOGO DANS LE HEADER */
+
+header img {
+  max-width: 100%;
+  height: auto;
+  margin: 0 auto;
+  display: block;
+}
+
+
+/* STYLE CONTAINER DE CONNEXION */
+
+.card-connnexion {
+  display: flex !important;
+  flex-direction: column !important;
+  justify-content: center !important;
+  align-items: center !important;
+}
+
+/* STYLE DES BOUTONS  */
+
+.btn-connexion {
+  font-family: 'Poppins', sans-serif !important;
+  font-size: 18px !important;
+  letter-spacing: 2px !important;
+  text-transform: uppercase !important;
+  display: inline-block !important;
+  text-align: center !important;
+  font-weight: bold !important;
+  padding: 0.7em 2em !important;
+  border: 3px solid #FF0072 !important;
+  border-radius: 2px !important;
+  min-width: 285px !important;
+  position: relative !important;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.1) !important;
+  color: #FF0072 !important;
+  background-color: transparent !important;
+  text-decoration: none !important;
+  transition: 0.3s ease all !important;
+  z-index: 1 !important;
+}
+
+.btn-connexion:before {
+  transition: 0.5s all ease !important;
+  position: absolute !important;
+  top: 0 !important;
+  left: 50% !important;
+  right: 50% !important;
+  bottom: 0 !important;
+  opacity: 0 !important;
+  content: '' !important;
+  background-color: #FF0072 !important;
+  z-index: -1 !important;
+}
+
+.btn-connexion:hover, .btn-connexion:focus {
+  color: white !important;
+}
+
+.btn-connexion:hover:before, .btn-connexion:focus:before {
+  transition: 0.5s all ease !important;
+  left: 0 !important;
+  right: 0 !important;
+  opacity: 1 !important;
+}
+
+.btn-connexion:active {
+  transform: scale(0.9) !important;
+}
+
+/* STYLE DE LA PAGE D'ACCUEIL */
+
+/* Style spécifique pour la page d'accueil */
+
+h2, h3 {
+  text-align: center;
+  margin-bottom: 1rem;
+}
+
+button {
+  background-color: #FF0072;
+  color: white;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 4px;
+  margin: 20px auto;
+  display: block;
+  font-size: 16px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+button:hover {
+  background-color: #e60066;
+}
+
+button a {
+  color: white;
+  text-decoration: none;
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 30px;
+  background-color: white;
+}
+
+thead {
+  background-color: #0097A7;
+  color: white;
+}
+
+th, td {
+  padding: 12px 15px;
+  border: 1px solid #ddd;
+  text-align: left;
+  vertical-align: top;
+}
+
+tbody tr:nth-child(even) {
+  background-color: #f9f9f9;
+}
+
+tbody tr:hover {
+  background-color: #f1f1f1;
+}
+
+/* Petites touches pour l'affichage */
+p {
+  text-align: center;
+  font-size: 1.2rem;
+  margin-top: 1rem;
+}
+
+
+footer {
+  background-color: #36363b;
+  color: white;
+  text-align: center;
+  padding: 1rem;
+  margin-top: 3rem;
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  left: 0;
+  right: 0;
+  position: fixed;
+}
