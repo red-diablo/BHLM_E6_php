@@ -43,7 +43,7 @@ supprConfirm:
 
 #route de la page d'ajout d'entreprise
 ajoutEntreprise:
-        path: /ajoutEntreprise{id}
+        path: /ajoutEntreprise
         controller: App\Controller\AjoutEntrepriseController::appelFormAjout
 
 #route de la page d'ajout d'employés
