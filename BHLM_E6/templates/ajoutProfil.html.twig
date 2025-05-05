@@ -1,0 +1,7 @@
+<h2>Ajouter un type de profil recherché pour une entreprise</h2>
+
+{{ form(ajoutProfilForm) }}
+
+{% for message in app.flashes('success') %}
+    {{ message }}
+{% endfor %}
