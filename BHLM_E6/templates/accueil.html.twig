@@ -42,7 +42,6 @@
             </th>
             <th>Secteur d'activité</th>
             <th>Tuteurs</th>
-            <th>Profils</th>
             <th>Etudiants</th>
             <th>Jury</th>
         </tr>
@@ -70,11 +69,6 @@
                         {{ employe.tel }}<br>
                     {% endfor %}
                 </td>
-                <td>
-                    {% for profil in entreprise.profils %}
-                        {{ profil.information }} {{ profil.optionFormation}}
-                    {% endfor %}
-                </td>                
                 <td>
                     {% for etudiant in entreprise.etudiants %}
                     <br>
