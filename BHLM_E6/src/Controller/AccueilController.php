@@ -4,6 +4,7 @@ namespace App\Controller;
 use App\Entity\SessionExam;
 use App\Entity\Utilisateur;
 use App\Entity\Entreprise;
+use App\Entity\Profil;
 use Doctrine\Persistence\ManagerRegistry;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
@@ -31,7 +32,10 @@ use Symfony\Component\Security\Core\User\UserInterface;
             $sessionExamRepository = $entityManager->getRepository(SessionExam::class);
             $listeSessionExam = $sessionExamRepository->findAll();
 
-            return $this->render('accueil.html.twig', ['listeEntreprise' => $listeEntreprise, 'tri' => $tri, 'ordre' => $ordre, 'user' => $user, 'userRole' => $userRole, 'listeSessionExam' => $listeSessionExam]);
+            $profilRepository = $entityManager->getRepository(Profil::class);
+            $profil = $profilRepository->findAll();
+
+            return $this->render('accueil.html.twig', ['listeEntreprise' => $listeEntreprise, 'tri' => $tri, 'ordre' => $ordre, 'user' => $user, 'userRole' => $userRole, 'listeSessionExam' => $listeSessionExam, 'profil' => $profil]);
         }
 
     }

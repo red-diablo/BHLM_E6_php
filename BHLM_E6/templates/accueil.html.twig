@@ -70,8 +70,12 @@
                     {% endfor %}
                 </td>
                 <td>
+                    {% for profil in entreprise.profils %}
+                        {{ profil.formation }} {{ profil.optionFormation }}
+                    {% endfor %}
+                </td>                
+                <td>
                     {% for etudiant in entreprise.etudiants %}
-                    <br>
                         {{ etudiant.nom }} {{ etudiant.prenom}} en {{ etudiant.bts }} {{ etudiant.specialite.nom }}<br>
                         Année du stage : {{ etudiant.annee }}
                     {% endfor %}
