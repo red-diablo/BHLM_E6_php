@@ -1,4 +1,14 @@
 {# _footer.html.twig #}
-<footer>
-  <p>&copy; {{ "now"|date("Y") }} - BHLM</p>
-</footer>
+
+{% if app.session.get('user_id') %}
+    <footer class="footer-connecte">
+      <p>&copy; {{ "now"|date("Y") }} - BHLM</p>
+    </footer>
+{% else %}
+    <footer class="footer-non-connecte">
+      <p>&copy; {{ "now"|date("Y") }} - BHLM</p>
+    </footer>
+{% endif %}
+
+
+

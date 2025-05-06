@@ -114,7 +114,8 @@ h2, h3 {
   display: inline-block !important;
   text-align: center !important;
   font-weight: bold !important;
-  padding: 0.7em 2em !important;
+  padding: 0.5em 1em !important;
+  margin: 5px !important;
   border: 3px solid #FF0072 !important;
   border-radius: 2px !important;
   position: relative !important;
@@ -217,7 +218,7 @@ p {
 }
 
 
-footer {
+.footer-non-connecte {
   background-color: #36363b;
   color: white;
   text-align: center;
@@ -229,4 +230,16 @@ footer {
   left: 0;
   right: 0;
   position: fixed;
+}
+
+.footer-connecte {
+  background-color: #36363b;
+  color: white;
+  text-align: center;
+  padding: 1rem;
+  margin-top: 3rem;
+  bottom: 0;
+  width: 100%;
+  left: 0;
+  right: 0;
 }
