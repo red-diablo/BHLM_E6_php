@@ -18,11 +18,27 @@ accueil:
 ajout:
         path: /ajout
         controller: App\Controller\AjoutController::Lien
+#route pour la modification
 #route de la page modification 
 modif:
-        path: /modif{id}
+        path: /modif/{id}
         controller: App\Controller\ModifController::appelFormModif
         methods: [GET]
+        
+
+modifEntreprise:
+        path: /modifEntreprise/{id}
+        controller: App\Controller\ModifEntrepriseController::appelFormModif
+        methods: ['GET', 'POST']
+
+modifEmploye:
+        path: /modifEmploye/{id}
+        controller: App\Controller\ModifEmployeController::appelFormModif
+
+#route de la page d'ajout d'étudiant
+modifEtudiant:
+        path: /modifEtudiant
+        controller: App\Controller\ModifEtudiantController::appelFormModif
 
 
 
@@ -40,7 +56,7 @@ supprConfirm:
         controller: App\Controller\SuppressionController::suppression
         methods: [POST]
 
-
+#route ajout
 #route de la page d'ajout d'entreprise
 ajoutEntreprise:
         path: /ajoutEntreprise
