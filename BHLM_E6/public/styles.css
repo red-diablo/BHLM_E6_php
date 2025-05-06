@@ -106,6 +106,8 @@ h2, h3 {
   margin-bottom: 1rem;
 }
 
+/* Style pour les boutons de suppression et modification */
+
 .btn-icone {
   font-family: 'Poppins', sans-serif !important;
   font-size: 18px !important;
@@ -116,11 +118,11 @@ h2, h3 {
   font-weight: bold !important;
   padding: 0.6em 1.2em !important;
   margin: 5px !important;
-  border: 3px solid #FF0072 !important;
+  border: 3px solid #04999E !important;
   border-radius: 2px !important;
   position: relative !important;
   box-shadow: 0 2px 10px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.1) !important;
-  color: #FF0072;
+  color: #04999E;
   background-color: transparent !important;
   text-decoration: none !important;
   transition: 0.3s ease all !important;
@@ -136,7 +138,7 @@ h2, h3 {
   bottom: 0 !important;
   opacity: 0 !important;
   content: '' !important;
-  background-color: #FF0072 !important;
+  background-color: #04999E !important;
   z-index: -1 !important;
 }
 
@@ -158,7 +160,7 @@ h2, h3 {
 .icone {
   width: 22px;
   height: 22px;
-  fill: #FF0072;
+  fill: #04999E;
 }
 
 .btn-icone:hover .icone,
@@ -166,28 +168,69 @@ h2, h3 {
   fill: white;
 }
 
-button {
-  background-color: #FF0072;
-  color: white;
-  padding: 10px 20px;
-  border: none;
-  border-radius: 4px;
-  margin: 20px auto;
-  display: block;
-  font-size: 16px;
-  font-weight: bold;
-  cursor: pointer;
-  transition: background-color 0.3s ease;
+/* Différenciation entre les boutons de suppression et de modification */
+
+.btn-icone-suppr {
+  font-family: 'Poppins', sans-serif !important;
+  font-size: 18px !important;
+  letter-spacing: 2px !important;
+  text-transform: uppercase !important;
+  display: inline-block !important;
+  text-align: center !important;
+  font-weight: bold !important;
+  padding: 0.6em 1.2em !important;
+  margin: 5px !important;
+  border: 3px solid #E9621D !important;
+  border-radius: 2px !important;
+  position: relative !important;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.1) !important;
+  color: #E9621D;
+  background-color: transparent !important;
+  text-decoration: none !important;
+  transition: 0.3s ease all !important;
+  z-index: 1 !important;
 }
 
-button:hover {
-  background-color: #e60066;
+.btn-icone-suppr:before {
+  transition: 0.5s all ease !important;
+  position: absolute !important;
+  top: 0 !important;
+  left: 50% !important;
+  right: 50% !important;
+  bottom: 0 !important;
+  opacity: 0 !important;
+  content: '' !important;
+  background-color: #E9621D !important;
+  z-index: -1 !important;
 }
 
-button a {
-  color: white;
-  text-decoration: none;
+.btn-icone-suppr:hover, .btn-icone-suppr:focus {
+  color: white !important;
 }
+
+.btn-icone-suppr:hover:before, .btn-icone-suppr:focus:before {
+  transition: 0.5s all ease !important;
+  left: 0 !important;
+  right: 0 !important;
+  opacity: 1 !important;
+}
+
+.btn-icone-suppr:active {
+  transform: scale(0.9) !important;
+}
+
+.icone-suppr {
+  width: 22px;
+  height: 22px;
+  fill: #E9621D;
+}
+
+.btn-icone-suppr:hover .icone-suppr,
+.btn-icone-suppr:focus .icone-suppr {
+  fill: white;
+}
+
+/* STYLE DES TABLEAUX */
 
 table {
   width: 100%;
