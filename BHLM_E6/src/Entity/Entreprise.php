@@ -42,10 +42,17 @@ class Entreprise
     #[ORM\ManyToOne(inversedBy: 'entreprises')]
     private ?SecteurActivite $SecteurActivite = null;
 
+    /**
+     * @var Collection<int, Profil>
+     */
+    #[ORM\ManyToMany(targetEntity: Profil::class, mappedBy: 'profils')]
+    private Collection $profils;
+
     public function __construct()
     {
         $this->employes = new ArrayCollection();
         $this->etudiants = new ArrayCollection();
+        $this->profils = new ArrayCollection();
     }
 
     public function getId(): ?int
@@ -166,6 +173,33 @@ class Entreprise
     public function setSecteurActivite(?SecteurActivite $SecteurActivite): static
     {
         $this->SecteurActivite = $SecteurActivite;
+
+        return $this;
+    }
+
+    /**
+     * @return Collection<int, Profil>
+     */
+    public function getProfils(): Collection
+    {
+        return $this->profils;
+    }
+
+    public function addProfil(Profil $profil): static
+    {
+        if (!$this->profils->contains($profil)) {
+            $this->profils->add($profil);
+            $profil->addProfil($this);
+        }
+
+        return $this;
+    }
+
+    public function removeProfil(Profil $profil): static
+    {
+        if ($this->profils->removeElement($profil)) {
+            $profil->removeProfil($this);
+        }
 
         return $this;
     }

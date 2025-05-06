@@ -1,7 +1,52 @@
-<h2>Créer votre compte :</h2>
+{% extends 'base.html.twig' %}
 
-{{ form(inscriptionForm) }}
+{% block title %}Inscription{% endblock %}
 
-{% for message in app.flashes('success') %}
-    {{ message }}
-{% endfor %}
+{% block body %}
+  <div class="row justify-content-center">
+    <div class="col-md-6">
+      <div class="card shadow">
+        <div class="card-body card-connnexion">
+          <h2 class="mb-4 text-center">Créer un compte</h2>
+
+            {{ form_start(inscriptionForm) }}
+            
+                {{ form_row(inscriptionForm.nom, {
+                attr: {'class': 'form-control'},
+                label_attr: {'class': 'form-label'}
+                }) }}
+
+                {{ form_row(inscriptionForm.prenom, {
+                attr: {'class': 'form-control'},
+                label_attr: {'class': 'form-label'}
+                }) }}
+
+                {{ form_row(inscriptionForm.login, {
+                attr: {'class': 'form-control'},
+                label_attr: {'class': 'form-label'}
+                }) }}
+
+                {{ form_row(inscriptionForm.mdp, {
+                attr: {'class': 'form-control'},
+                label_attr: {'class': 'form-label'}
+                }) }}
+
+                {{ form_row(inscriptionForm.submit, {
+                    attr: {'class': 'btn btn-connexion btn-primary mt-3'}
+                }) }}
+
+                {{ form_row(inscriptionForm.cancel, {
+                    attr: {'class': 'btn btn-connexion btn-primary mt-3'}
+                }) }}
+
+            {{ form_end(inscriptionForm) }}
+
+          {% for message in app.flashes('success') %}
+            <div class="alert alert-success mt-3">{{ message }}</div>
+          {% endfor %}
+
+        </div>
+      </div>
+    </div>
+  </div>
+{% endblock %}

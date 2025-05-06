@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Hôte : 127.0.0.1:3306
--- Généré le : lun. 28 avr. 2025 à 09:03
+-- Généré le : lun. 28 avr. 2025 à 09:59
 -- Version du serveur : 8.3.0
 -- Version de PHP : 8.2.18
 
@@ -52,7 +52,9 @@ INSERT INTO `doctrine_migration_versions` (`version`, `executed_at`, `execution_
 ('DoctrineMigrations\\Version20250403072159', NULL, NULL),
 ('DoctrineMigrations\\Version20250403072934', '2025-04-03 07:29:42', 231),
 ('DoctrineMigrations\\Version20250403075740', '2025-04-03 07:57:46', 66),
-('DoctrineMigrations\\Version20250424104014', '2025-04-24 10:40:26', 505);
+('DoctrineMigrations\\Version20250424104014', '2025-04-24 10:40:26', 505),
+('DoctrineMigrations\\Version20250428092740', '2025-04-28 09:27:59', 93),
+('DoctrineMigrations\\Version20250428093312', '2025-04-28 09:33:29', 254);
 
 -- --------------------------------------------------------
 
@@ -220,6 +222,91 @@ INSERT INTO `etudiant_entreprise` (`etudiant_id`, `entreprise_id`) VALUES
 -- --------------------------------------------------------
 
 --
+-- Structure de la table `profil`
+--
+
+DROP TABLE IF EXISTS `profil`;
+CREATE TABLE IF NOT EXISTS `profil` (
+  `id` int NOT NULL AUTO_INCREMENT,
+  `formation` varchar(100) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `option_formation` varchar(100) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=9 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Déchargement des données de la table `profil`
+--
+
+INSERT INTO `profil` (`id`, `formation`, `option_formation`) VALUES
+(1, '1SIO', 'SLAM'),
+(2, '1SIO', 'SISR'),
+(3, '2SIO', 'SLAM'),
+(4, '2SIO', 'SISR'),
+(5, 'Alternance', NULL),
+(6, 'Licence', NULL),
+(7, 'Jury', NULL),
+(8, NULL, 'SLAM');
+
+-- --------------------------------------------------------
+
+--
+-- Structure de la table `profil_entreprise`
+--
+
+DROP TABLE IF EXISTS `profil_entreprise`;
+CREATE TABLE IF NOT EXISTS `profil_entreprise` (
+  `profil_id` int NOT NULL,
+  `entreprise_id` int NOT NULL,
+  PRIMARY KEY (`profil_id`,`entreprise_id`),
+  KEY `IDX_36DFA19E275ED078` (`profil_id`),
+  KEY `IDX_36DFA19EA4AEAFEA` (`entreprise_id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Déchargement des données de la table `profil_entreprise`
+--
+
+INSERT INTO `profil_entreprise` (`profil_id`, `entreprise_id`) VALUES
+(1, 1),
+(1, 5),
+(1, 7),
+(1, 9),
+(1, 12),
+(1, 16),
+(1, 17),
+(1, 25),
+(1, 26),
+(2, 1),
+(2, 9),
+(2, 16),
+(2, 25),
+(2, 26),
+(3, 1),
+(3, 5),
+(3, 7),
+(3, 9),
+(3, 12),
+(3, 15),
+(3, 16),
+(3, 17),
+(3, 25),
+(3, 26),
+(4, 1),
+(4, 9),
+(4, 16),
+(4, 25),
+(4, 26),
+(5, 11),
+(5, 26),
+(6, 1),
+(6, 9),
+(6, 11),
+(7, 9),
+(8, 30);
+
+-- --------------------------------------------------------
+
+--
 -- Structure de la table `secteur_activite`
 --
 
@@ -375,6 +462,13 @@ ALTER TABLE `etudiant`
 ALTER TABLE `etudiant_entreprise`
   ADD CONSTRAINT `FK_C3B6951AA4AEAFEA` FOREIGN KEY (`entreprise_id`) REFERENCES `entreprise` (`id`) ON DELETE CASCADE,
   ADD CONSTRAINT `FK_C3B6951ADDEAB1A3` FOREIGN KEY (`etudiant_id`) REFERENCES `etudiant` (`id`) ON DELETE CASCADE;
+
+--
+-- Contraintes pour la table `profil_entreprise`
+--
+ALTER TABLE `profil_entreprise`
+  ADD CONSTRAINT `FK_36DFA19E275ED078` FOREIGN KEY (`profil_id`) REFERENCES `profil` (`id`) ON DELETE CASCADE,
+  ADD CONSTRAINT `FK_36DFA19EA4AEAFEA` FOREIGN KEY (`entreprise_id`) REFERENCES `entreprise` (`id`) ON DELETE CASCADE;
 
 --
 -- Contraintes pour la table `session_exam_employe`
