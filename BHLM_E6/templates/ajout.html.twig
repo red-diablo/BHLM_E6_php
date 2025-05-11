@@ -1,6 +1,39 @@
-<p>Ajouter une entreprise : </p><button><a href="{{ path('ajoutEntreprise') }}">Ajouter</a></button>
-<p>Ajouter un/une employé/employée à une entreprise : </p><button><a href="{{ path('ajoutEmploye') }}">Ajouter</a></button>
-<p>Ajouter un/une étudiant/étudiante qui a déjà effectué un stage dans une entreprise : </p><button><a href="{{ path('ajoutEtudiant') }}">Ajouter</a></button>
+{% extends 'base.html.twig' %}
+
+{# {% block body %}
+
+<p>Ajouter une entreprise : </p>
+<a href="{{ path('ajoutEntreprise') }}" class="btn-icone">Ajouter</a>
+
+<p>Ajouter un/une employé/employée à une entreprise : </p>
+<a href="{{ path('ajoutEmploye') }}" class="btn-icone">Ajouter</a>
+
+<p>Ajouter un/une étudiant/étudiante qui a déjà effectué un stage dans une entreprise : </p>
+<a href="{{ path('ajoutEtudiant') }}" class="btn-icone">Ajouter</a>
 
 <br>
-<button><a href="{{ path('accueil') }}">Retour</a></button>
+<a href="{{ path('accueil') }}" class="btn-icone-suppr">Retour</a>
+
+{% endblock %} #}
+
+{% block body %}
+  <div class="row justify-content-center">
+    <div class="col-md-6">
+      <div class="card shadow">
+        <div class="card-body card-connnexion">
+          <h2 class="mb-4 text-center">Ajout</h2>
+
+            <a href="{{ path('ajoutEntreprise') }}" class="btn-icone">Ajouter une entreprise</a>
+
+            <a href="{{ path('ajoutEmploye') }}" class="btn-icone">Ajouter un.e employé.e à une entreprise</a>
+
+            <a href="{{ path('ajoutEtudiant') }}" class="btn-icone">Ajouter un.e étudiant.e ayant effectué un stage dans une entreprise</a>
+
+            <br>
+            <a href="{{ path('accueil') }}" class="btn-icone-suppr">Retour</a>
+
+        </div>
+      </div>
+    </div>
+  </div>
+{% endblock %}

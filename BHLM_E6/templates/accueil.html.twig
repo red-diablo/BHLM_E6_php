@@ -5,18 +5,14 @@
 {% block body %}
 
 {% if user %}
-    <a href="{{ path('deconnexion') }}" class="btn btn-danger">Déconnexion</a>
-{% endif %}
-
-{% if user %}
     <h2>Bienvenue {{ user.prenom }} ({{ user.login }}) sur le site complémentaire de la Chataigneraie !</h2>
 {% endif %}
 {% if userRole == 1 %}
-    <h3>Vous êtes connecté en tant qu'administrateur, vous pouvez donc ajouter, modifier ou supprimer une entreprise qui peut prendre des stagiaires dans cette liste</h3>
+    <p>Vous êtes connecté en tant qu'administrateur, vous pouvez ajouter, modifier ou supprimer les entreprises de cette liste qui acceptent des stagiaires</p>
 {% endif %}
 
 {% if userRole == 0 %}
-    <h3>Ici, vous pouvez voir la liste des entreprises qui peuvent prendre des stagiaires</h3>
+    <p>Ici, vous pouvez consulter la liste des entreprises qui acceptent des stagiaires</p>
 {% endif %}
 
 <p>Nombre total d'entreprises : {{ listeEntreprise|length }}</p>
@@ -24,7 +20,7 @@
 {#<p>User Role: {{ userRole }}</p>#}
 
 {% if userRole == 1 %}
-    <a href="{{ path('ajout') }}" class="btn btn-primary">Ajouter</a>
+    <a href="{{ path('ajout') }}" class="btn btn-primary btn-icone">Ajouter</a>
 {% endif %}
 
 <div class="table-responsive">
@@ -35,10 +31,10 @@
                 <th></th>
             {% endif %}
             <th>
-                <a href="{{ path(app.request.attributes.get('_route'), {tri: 'nom', ordre: tri == 'nom' and ordre == 'asc' ? 'desc' : 'asc'}) }}">Nom de l'entreprise</a>
+                <a href="{{ path(app.request.attributes.get('_route'), {tri: 'nom', ordre: tri == 'nom' and ordre == 'asc' ? 'desc' : 'asc'}) }}" class="tab-a">Nom de l'entreprise</a>
             </th>
             <th>
-                <a href="{{ path(app.request.attributes.get('_route'), {tri: 'ville',ordre: tri == 'ville' and ordre == 'asc' ? 'desc' : 'asc'}) }}">Ville</a>
+                <a href="{{ path(app.request.attributes.get('_route'), {tri: 'ville',ordre: tri == 'ville' and ordre == 'asc' ? 'desc' : 'asc'}) }}" class="tab-a">Ville</a>
             </th>
             <th>Secteur d'activité</th>
             <th>Tuteurs</th>

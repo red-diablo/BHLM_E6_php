@@ -1,4 +1,7 @@
-<h2>Associer un étudiant à une entreprise où celui-ci a déjà effectuer un stage là-bas</h2>
+{% extends 'base.html.twig' %}
+
+{% block body %}
+<h2>Associer un.e étudiant.e à l'entreprise dans laquelle il/elle a effectué un stage</h2>
 
 {{ form(associationForm) }}
 
@@ -7,3 +10,4 @@
         {{ message }}
     </div>
 {% endfor %}
+{% endblock %}
