@@ -1,13 +1,33 @@
 {# templates/partials/_header.html.twig #}
 <!-- Header global -->
-<header>
+{# <header>
   <div class="container d-flex">
     <img src="{{ asset('logo.png') }}" alt="Logo La Châtaigneraie" class="logo">
     <nav>
-      {# <a href="/" class="text-black me-3 text-decoration-none">Accueil</a>
-      <a href="/connexion" class="text-black text-decoration-none">Connexion</a> #}
+      {% if app.session.get('user_id') %}
+          <a href="{{ path('deconnexion') }}" class="btn btn-danger btn-deconnexion">Déconnexion</a>
+      {% endif %}
     </nav>
   </div>
+</header> #}
+
+<header>
+  <div class="container d-flex justify-content-between align-items-center">
+    
+    <div class="header-space"></div> {# Faux espace à gauche #}
+
+    <img src="{{ asset('logo.png') }}" alt="Logo La Châtaigneraie" class="logo">
+
+    <div>
+      {% if app.session.get('user_id') %}
+        <a href="{{ path('deconnexion') }}" class="btn btn-danger btn-deconnexion">Déconnexion</a>
+      {% else %}
+        <div class="header-space"></div> {# Faux espace à droite si pas connecté #}
+      {% endif %}
+    </div>
+
+  </div>
 </header>
+
 
 

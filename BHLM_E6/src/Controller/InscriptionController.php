@@ -37,7 +37,7 @@ class InscriptionController extends AbstractController
             $entityManager->flush(); // Sauvegarder dans la base de données
 
             // Message de succès
-            $this->addFlash('success', 'Inscription réussie !');
+            return $this->redirectToRoute('connexion', ['message' => 'Inscription réussie !']);
         }
 
         // Afficher le formulaire
