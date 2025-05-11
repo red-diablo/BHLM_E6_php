@@ -1,20 +1,5 @@
+
 {% extends 'base.html.twig' %}
-
-{# {% block body %}
-
-<p>Ajouter une entreprise : </p>
-<a href="{{ path('ajoutEntreprise') }}" class="btn-icone">Ajouter</a>
-
-<p>Ajouter un/une employé/employée à une entreprise : </p>
-<a href="{{ path('ajoutEmploye') }}" class="btn-icone">Ajouter</a>
-
-<p>Ajouter un/une étudiant/étudiante qui a déjà effectué un stage dans une entreprise : </p>
-<a href="{{ path('ajoutEtudiant') }}" class="btn-icone">Ajouter</a>
-
-<br>
-<a href="{{ path('accueil') }}" class="btn-icone-suppr">Retour</a>
-
-{% endblock %} #}
 
 {% block body %}
   <div class="row justify-content-center">
@@ -28,6 +13,9 @@
             <a href="{{ path('ajoutEmploye') }}" class="btn-icone">Ajouter un.e employé.e à une entreprise</a>
 
             <a href="{{ path('ajoutEtudiant') }}" class="btn-icone">Ajouter un.e étudiant.e ayant effectué un stage dans une entreprise</a>
+            
+            <p>Ajouter un profil recherché par une entreprise : </p><button><a href="{{ path('ajoutProfil') }}">Ajouter</a></button>
+            <p>Associer une session d'examen à un employé qui est d'accord pour être jury : </p><button><a href="{{ path('ajoutSessionExam') }}">Ajouter</a></button>
 
             <br>
             <a href="{{ path('accueil') }}" class="btn-icone-suppr">Retour</a>
