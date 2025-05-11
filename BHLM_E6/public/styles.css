@@ -327,7 +327,7 @@ p {
 }
 
 
-.footer-non-connecte {
+.footer-fixed {
   background-color: #36363b;
   color: white;
   text-align: center;
@@ -341,7 +341,7 @@ p {
   position: fixed;
 }
 
-.footer-connecte {
+.footer-non-fixed {
   background-color: #36363b;
   color: white;
   text-align: center;

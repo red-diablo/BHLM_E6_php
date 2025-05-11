@@ -1,6 +1,6 @@
 {# _footer.html.twig #}
 
-{% if app.session.get('user_id') %}
+{# {% if app.session.get('user_id') %}
     <footer class="footer-connecte">
       <p>&copy; {{ "now"|date("Y") }} - BHLM</p>
     </footer>
@@ -8,5 +8,10 @@
     <footer class="footer-non-connecte">
       <p>&copy; {{ "now"|date("Y") }} - BHLM</p>
     </footer>
-{% endif %}
+{% endif %} #}
 
+{% set currentRoute = app.request.attributes.get('_route') %}
+
+<footer class="{% if currentRoute != 'accueil' %}footer-fixed{% else %}footer-non-fixed{% endif %}">
+  <p>&copy; {{ "now"|date("Y") }} - BHLM</p>
+</footer>
