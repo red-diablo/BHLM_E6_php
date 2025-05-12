@@ -19,7 +19,7 @@ class ModifEtudiant extends AbstractType
                 'choice_label' => 'nom',
                 'multiple' => true,
                 'expanded' => true,
-                'label' => 'Étudiants à associer à l’entreprise',
+                'label' => 'Étudiants à associer à l’entreprise :',
             ])
             ->add('submit', SubmitType::class, ['label' => 'Valider'])
             ->add('cancel', ButtonType::class, [

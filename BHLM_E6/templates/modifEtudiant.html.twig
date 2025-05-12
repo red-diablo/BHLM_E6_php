@@ -1,20 +1,37 @@
-{# <!DOCTYPE html>
-    <html lang="fr">
-    <head>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <meta name="description" content="Description de votre site">
-        <meta name="author" content="Votre Nom">
-        <title>Ma Page Web</title>
-        <link rel="stylesheet" href="styles.css">
-    </head> #}
-    
-    
-    <h2> modifier les etudiant qui on fait des : {{ entreprise.nom }}</h2>
+{% extends 'base.html.twig' %}
 
+{% block title %}Modification{% endblock %}
 
-{{ form_start(form) }}
-    {{ form_row(form.etudiants) }}
-    {{ form_row(form.submit) }}
-    {{ form_row(form.cancel) }}
-{{ form_end(form) }}
+{% block body %}
+  <div class="row justify-content-center">
+    <div class="col-md-8">
+      <div class="card shadow">
+        <div class="card-body card-connnexion">
+          <h2 class="mb-4 text-center">Modifier les étudiants</h2>
+
+          <p class="text-center mb-4">
+            Associez les étudiants à l’entreprise <strong>{{ entreprise.nom }}</strong>
+          </p>
+
+          {{ form_start(form) }}
+
+            <div class="mb-3">
+              {{ form_label(form.etudiants) }}
+              <br>
+              <div class="form-check-group">
+                {{ form_widget(form.etudiants) }}
+              </div>
+            </div>
+
+            <div class="d-flex mt-4 row-submit">
+              {{ form_widget(form.cancel, {'attr': {'class': 'btn btn-secondary btn-icone-suppr'}}) }}
+              {{ form_widget(form.submit, {'attr': {'class': 'btn btn-primary btn-icone'}}) }}
+            </div>
+
+          {{ form_end(form) }}
+
+        </div>
+      </div>
+    </div>
+  </div>
+{% endblock %}

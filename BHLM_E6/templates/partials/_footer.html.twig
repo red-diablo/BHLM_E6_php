@@ -2,6 +2,6 @@
 
 {% set currentRoute = app.request.attributes.get('_route') %}
 
-<footer class="{% if currentRoute != 'accueil' %}footer-fixed{% else %}footer-non-fixed{% endif %}">
+<footer class="{% if currentRoute == 'accueil' or currentRoute == 'recherche' %}footer-non-fixed{% else %}footer-fixed{% endif %}">
   <p>&copy; {{ "now"|date("Y") }} - BHLM</p>
 </footer>

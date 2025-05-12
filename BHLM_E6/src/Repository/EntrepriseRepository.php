@@ -26,6 +26,30 @@ class EntrepriseRepository extends ServiceEntityRepository
             ->getResult();
     }
 
+    public function search(string $motcle = '', ?int $secteurId = null, string $critere = 'nom'): array
+    {
+        $qb = $this->createQueryBuilder('e');
+
+        if ($motcle) {
+            $allowedCriteria = ['nom', 'ville', 'cp'];
+            if (!in_array($critere, $allowedCriteria)) {
+                $critere = 'nom';
+            }
+
+            $qb->andWhere("e.$critere LIKE :motcle")
+            ->setParameter('motcle', '%' . $motcle . '%');
+        }
+
+        if ($secteurId) {
+            $qb->andWhere('e.SecteurActivite = :secteur')
+            ->setParameter('secteur', $secteurId);
+        }
+
+        return $qb->getQuery()->getResult();
+    }
+
+
+
     //    /**
     //     * @return Entreprise[] Returns an array of Entreprise objects
     //     */

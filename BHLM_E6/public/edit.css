@@ -1,6 +1,6 @@
-.btn-ajout {
+.btn-accueil {
   font-family: 'Poppins', sans-serif !important;
-  font-size: 18px !important;
+  font-size: 14px !important;
   letter-spacing: 2px !important;
   text-transform: uppercase !important;
   display: inline-block !important;
@@ -19,7 +19,7 @@
   z-index: 1 !important;
 }
 
-.btn-ajout:before {
+.btn-accueil:before {
   transition: 0.5s all ease !important;
   position: absolute !important;
   top: 0 !important;
@@ -32,17 +32,17 @@
   z-index: -1 !important;
 }
 
-.btn-ajout:hover, .btn-ajout:focus {
+.btn-accueil:hover, .btn-accueil:focus {
   color: white !important;
 }
 
-.btn-ajout:hover:before, .btn-ajout:focus:before {
+.btn-accueil:hover:before, .btn-accueil:focus:before {
   transition: 0.5s all ease !important;
   left: 0 !important;
   right: 0 !important;
   opacity: 1 !important;
 }
 
-.btn-ajout:active {
+.btn-accueil:active {
   transform: scale(0.9) !important;
 }

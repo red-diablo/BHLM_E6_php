@@ -12,9 +12,9 @@
             <p> Êtes-vous sûr de vouloir supprimer ?</p>
 
             <form method="post" action="{{ path('supprConfirm', {id: entreprise.id}) }}">
+                <a href="{{ path('accueil') }}" class="btn btn-icone">Annuler</a>
                 <input type="hidden" name="_token" value="{{ csrf_token('suppr_confirm' ~ entreprise.id) }}">
                 <button class="btn btn-icone-suppr">Oui, supprimer</button>
-                <a href="{{ path('accueil') }}" class="btn btn-icone">Annuler</a>
             </form>
 
         </div>

@@ -1,13 +1,13 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Modification Employé{% endblock %}
+{% block title %}Modification{% endblock %}
 
 {% block body %}
   <div class="row justify-content-center">
     <div class="col-md-8">
       <div class="card shadow">
         <div class="card-body card-formulaire">
-          <h2 class="mb-4 text-center">Modifier un employé</h2>
+          <h2 class="mb-4 text-center">Modifier un tuteur</h2>
 
           {{ form_start(modifEmploye) }}
 
@@ -52,20 +52,16 @@
             </div>
           </div>
 
-          <div class="d-flex justify-content-between mt-3">
-            {{ form_row(modifEmploye.submit, {
-              attr: {'class': 'btn btn-icone btn-primary'}
-            }) }}
+          <div class="d-flex mt-3 row-submit">
             {{ form_row(modifEmploye.cancel, {
               attr: {'class': 'btn btn-icone-suppr btn-primary'}
+            }) }}
+            {{ form_row(modifEmploye.submit, {
+              attr: {'class': 'btn btn-icone btn-primary'}
             }) }}
           </div>
 
           {{ form_end(modifEmploye) }}
-
-          {% for message in app.flashes('success') %}
-            <div class="alert alert-success mt-3">{{ message }}</div>
-          {% endfor %}
 
         </div>
       </div>

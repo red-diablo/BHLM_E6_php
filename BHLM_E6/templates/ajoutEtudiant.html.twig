@@ -1,8 +1,57 @@
 {% extends 'base.html.twig' %}
 
+{% block title %}Ajout{% endblock %}
+
 {% block body %}
+  <div class="row justify-content-center">
+    <div class="col-md-8">
+      <div class="card shadow">
+        <div class="card-body card-formulaire">
+          <h2 class="mb-4 text-center">Ajouter un.e étudiant.e</h2>
 
-<h2>Ajouter un/une étudiant/étudiante</h2>
+          {{ form_start(ajoutEtudiant) }}
 
-{{ form(ajoutEtudiant) }}
+          <div class="row">
+            <div class="col-md-6">
+              {{ form_row(ajoutEtudiant.nom, {
+                attr: {'class': 'form-control'},
+                label_attr: {'class': 'form-label'}
+              }) }}
+            </div>
+            <div class="col-md-6">
+              {{ form_row(ajoutEtudiant.prenom, {
+                attr: {'class': 'form-control'},
+                label_attr: {'class': 'form-label'}
+              }) }}
+            </div>
+
+            <div class="col-md-6">
+              {{ form_row(ajoutEtudiant.annee, {
+                attr: {'class': 'form-control'},
+                label_attr: {'class': 'form-label'}
+              }) }}
+            </div>
+            <div class="col-md-6">
+              {{ form_row(ajoutEtudiant.Specialite, {
+                attr: {'class': 'form-select'},
+                label_attr: {'class': 'form-label'}
+              }) }}
+            </div>
+          </div>
+
+          <div class="d-flex mt-3 row-submit">
+            {{ form_row(ajoutEtudiant.cancel, {
+              attr: {'class': 'btn btn-icone-suppr btn-primary'}
+            }) }}
+            {{ form_row(ajoutEtudiant.submit, {
+              attr: {'class': 'btn btn-icone btn-primary'}
+            }) }}
+          </div>
+
+          {{ form_end(ajoutEtudiant) }}
+
+        </div>
+      </div>
+    </div>
+  </div>
 {% endblock %}
