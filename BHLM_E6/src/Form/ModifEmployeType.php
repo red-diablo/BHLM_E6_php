@@ -20,7 +20,7 @@ class ModifEmployeType extends AbstractType {
             ->add('fonction', TextType::class, ['label' => 'Fonction'])
             ->add('mail', EmailType::class, ['label' => 'Email'])
             ->add('tel', TextType::class, ['label' => 'Téléphone'])
-            ->add('identreprise', EntityType::class, [
+            ->add('idEntreprise', EntityType::class, [
                 'class' => Entreprise::class,
                 'choice_label' => 'nom',
                 'required' => true,

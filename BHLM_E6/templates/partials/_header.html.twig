@@ -14,6 +14,7 @@
       {% if currentRoute == 'connexion' or currentRoute == 'inscription'  %}
         <div class="header-space"></div> {# Faux espace à droite si pas connecté #}
       {% else %}
+        <a href="{{ path('accueil') }}" class="btn btn-primary btn-accueil">Accueil</a>
         <a href="{{ path('deconnexion') }}" class="btn btn-danger btn-deconnexion">Déconnexion</a>
       {% endif %}
     </div>
