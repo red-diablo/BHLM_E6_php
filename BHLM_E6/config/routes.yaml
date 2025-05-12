@@ -35,12 +35,6 @@ modifEmploye:
         controller: App\Controller\ModifEmployeController::appelFormModif
         methods: ['GET', 'POST']
 
-#route de la page d'ajout d'étudiant
-modifEtudiant:
-    path: /modifEtudiant/{id}
-    controller: App\Controller\ModifEtudiantController::modifierEtudiant
-
-
 
 
 #route de la page suppression

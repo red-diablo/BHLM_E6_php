@@ -11,7 +11,8 @@ use Symfony\Component\Routing\Annotation\Route;
 
 class ModifEtudiantController extends AbstractController
 {
-    #[Route('/modifierEtudiant/{id}', name: 'modifier_etudiant')]
+    
+    #[Route('/modifierEtudiant/{id}', name: 'modifEtudiant')]
     public function modifierEtudiant(int $id, Request $request, ManagerRegistry $doctrine): Response
     {
         $em = $doctrine->getManager();
@@ -22,10 +23,10 @@ class ModifEtudiantController extends AbstractController
             throw $this->createNotFoundException('Entreprise non trouvée');
         }
 
-        // Liste des étudiants actuellement associés
+       
         $etudiantsActuels = $entreprise->getEtudiants()->toArray();
 
-        // Crée un tableau pour le formulaire
+        
         $data = ['etudiants' => $etudiantsActuels];
 
         $form = $this->createForm(ModifEtudiant::class, $data);
