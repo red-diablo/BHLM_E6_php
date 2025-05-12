@@ -9,11 +9,11 @@ use Doctrine\Persistence\ManagerRegistry;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\HttpFoundation\Request;
-use Symfony\Component\Security\Http\Attribute\CurrentUser;
-use Symfony\Component\Security\Core\User\UserInterface;
+use Symfony\Component\Routing\Annotation\Route;
 
     class AccueilController extends AbstractController
     {
+        #[Route(path: '/accueil', name: 'accueil')]
         public function Accueil(ManagerRegistry $doctrine, Request $request): Response
         {
             $tri = $request->query->get('tri', 'nom'); // on récupère le paramètre tri de la requête

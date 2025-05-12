@@ -1,0 +1,37 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Modification{% endblock %}
+
+{% block body %}
+  <div class="row justify-content-center">
+    <div class="col-md-8">
+      <div class="card shadow">
+        <div class="card-body card-connnexion">
+          <h2 class="mb-4 text-center">Modifier les étudiants</h2>
+
+          <p class="text-center mb-4">
+            Associez les étudiants à l’entreprise <strong>{{ entreprise.nom }}</strong>
+          </p>
+
+          {{ form_start(form) }}
+
+            <div class="mb-3">
+              {{ form_label(form.etudiants) }}
+              <br>
+              <div class="form-check-group">
+                {{ form_widget(form.etudiants) }}
+              </div>
+            </div>
+
+            <div class="d-flex mt-4 row-submit">
+              {{ form_widget(form.cancel, {'attr': {'class': 'btn btn-secondary btn-icone-suppr'}}) }}
+              {{ form_widget(form.submit, {'attr': {'class': 'btn btn-primary btn-icone'}}) }}
+            </div>
+
+          {{ form_end(form) }}
+
+        </div>
+      </div>
+    </div>
+  </div>
+{% endblock %}

@@ -1,8 +1,8 @@
 <?php
+
 namespace App\Controller;
 
 use App\Entity\Employe;
-use App\Entity\Entreprise;
 use App\Form\ModifEmployeType;
 use Doctrine\Persistence\ManagerRegistry;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
@@ -12,32 +12,30 @@ use Symfony\Component\Routing\Annotation\Route;
 
 class ModifEmployeController extends AbstractController
 {
-    #[Route('/modifEmploye', name: 'modifEmploye')]
-    public function appelFormModif(Request $request, ManagerRegistry $doctrine): Response
+    
+    public function appelFormModif(int $id, Request $request, ManagerRegistry $doctrine): Response
     {
-        $employe = new Employe();
-
-        $entreprises = $doctrine->getRepository(Entreprise::class)->findAll();
-
-        // Création du formulaire d'ajout d'employés
+        $entityManager = $doctrine->getManager();
+    
+        // Cherche un employé lié à cette entreprise (prend le 1er)
+        $employe = $entityManager->getRepository(Employe::class)
+            ->findOneBy(['idEntreprise' => $id]);
+    
+        if (!$employe) {
+            throw $this->createNotFoundException("Aucun employé trouvé pour l'entreprise ID $id");
+        }
+    
         $form = $this->createForm(ModifEmployeType::class, $employe);
         $form->handleRequest($request);
-
-        // Si le formulaire est soumis et valide
+    
         if ($form->isSubmitted() && $form->isValid()) {
-            // Récupérer les données du formulaire dans l'objet Employe
-            $employe = $form->getData();
-
-            $entityManager = $doctrine->getManager();
-            $entityManager->persist($employe); // Persister les données
-            $entityManager->flush(); // Sauvegarder dans la base de données
-
-            // Message de succès
-            $this->addFlash('success', 'Employé.ée modifier avec succès !');
+            $entityManager->flush();
+            $this->addFlash('success', 'Employé modifié avec succès !');
+            return $this->redirectToRoute('accueil');
         }
-
-        // Afficher le formulaire
-        return $this->render('modifEmploye.html.twig', ['modifEmploye' => $form->createView(),]);
+    
+        return $this->render('modifEmploye.html.twig', [
+            'modifEmploye' => $form->createView(),
+        ]);
     }
 }
-?>

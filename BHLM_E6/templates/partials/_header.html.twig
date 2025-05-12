@@ -1,15 +1,7 @@
 {# templates/partials/_header.html.twig #}
 <!-- Header global -->
-{# <header>
-  <div class="container d-flex">
-    <img src="{{ asset('logo.png') }}" alt="Logo La Châtaigneraie" class="logo">
-    <nav>
-      {% if app.session.get('user_id') %}
-          <a href="{{ path('deconnexion') }}" class="btn btn-danger btn-deconnexion">Déconnexion</a>
-      {% endif %}
-    </nav>
-  </div>
-</header> #}
+
+{% set currentRoute = app.request.attributes.get('_route') %}
 
 <header>
   <div class="container d-flex justify-content-between align-items-center">
@@ -19,10 +11,11 @@
     <img src="{{ asset('logo.png') }}" alt="Logo La Châtaigneraie" class="logo">
 
     <div>
-      {% if app.session.get('user_id') %}
-        <a href="{{ path('deconnexion') }}" class="btn btn-danger btn-deconnexion">Déconnexion</a>
-      {% else %}
+      {% if currentRoute == 'connexion' or currentRoute == 'inscription'  %}
         <div class="header-space"></div> {# Faux espace à droite si pas connecté #}
+      {% else %}
+        <a href="{{ path('accueil') }}" class="btn btn-primary btn-accueil">Accueil</a>
+        <a href="{{ path('deconnexion') }}" class="btn btn-danger btn-deconnexion">Déconnexion</a>
       {% endif %}
     </div>
 

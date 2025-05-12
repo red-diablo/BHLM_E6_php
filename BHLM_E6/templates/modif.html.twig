@@ -1,13 +1,28 @@
-<button>
-    <a href="{{ path('modifEntreprise', {'id': entreprise.id}) }}">
-        Modifier l'entreprise : {{ entreprise.nom }}
-    </a>
-</button>
+
+{% extends 'base.html.twig' %}
 
 
-<p><button><a href="{{ path('ajout',{'id': entreprise.id}) }}">modification etudiant</a></button></p>
-<p><button><a href="{{ path('modifEmploye',{'id': entreprise.id}) }}">modification tuteur </a></button></p>
-
+{% block title %}Modification{% endblock %}
 
     
-    
+{% block body %}
+  <div class="row justify-content-center">
+    <div class="col-md-6">
+      <div class="card shadow">
+        <div class="card-body card-connnexion">
+          <h2 class="mb-4 text-center">Modification</h2>
+
+            <a href="{{ path('modifEntreprise', {'id': entreprise.id}) }}" class="btn btn-ajout">Modifier l'entreprise : {{ entreprise.nom }}</a>
+
+            <a href="{{ path('modifEtudiant',{'id': entreprise.id}) }}" class="btn btn-ajout">modification etudiant</a>
+
+            <a href="{{ path('modifEmploye',{'id': entreprise.id}) }}" class="btn btn-ajout">modification tuteur </a>
+
+            <br>
+            <a href="{{ path('accueil') }}" class="btn-icone-suppr">Retour</a>
+
+        </div>
+      </div>
+    </div>
+  </div>
+{% endblock %}
