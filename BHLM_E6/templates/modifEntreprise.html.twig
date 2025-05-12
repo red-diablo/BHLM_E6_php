@@ -10,9 +10,9 @@
     </head> #}
     <h2>Modifier une entreprise</h2>
 
-{{ form_start(modifEntreprise) }}
-    {{ form_widget(modifEntreprise) }}
-{{ form_end(modifEntreprise) }}
+
+{{ form(modifEntreprise) }}
+    
 
 {% for message in app.flashes('success') %}
     <div class="alert alert-success">{{ message }}</div>

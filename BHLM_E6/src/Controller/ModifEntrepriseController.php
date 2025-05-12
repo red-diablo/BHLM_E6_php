@@ -11,7 +11,7 @@ use Symfony\Component\Routing\Annotation\Route;
 
 class ModifEntrepriseController extends AbstractController
 {
-    
+    #[Route('/modifEntreprise/{id}', name: 'modifEntreprise')]
     public function appelFormModif(int $id, Request $request, ManagerRegistry $doctrine): Response
     {
         $entreprise = $doctrine->getRepository(Entreprise::class)->find($id);
@@ -26,6 +26,9 @@ class ModifEntrepriseController extends AbstractController
         if ($form->isSubmitted() && $form->isValid()) {
             $doctrine->getManager()->flush();
             $this->addFlash('success', 'Entreprise modifiée avec succès.');
+
+            
+            return $this->redirectToRoute('acceuil');
         }
 
         return $this->render('modifEntreprise.html.twig', [

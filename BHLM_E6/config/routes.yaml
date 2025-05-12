@@ -25,10 +25,6 @@ modif:
         controller: App\Controller\ModifController::appelFormModif
         methods: [GET]
 
-modifEntreprise:
-        path: /modifEntreprise/{id}
-        controller: App\Controller\ModifEntrepriseController::appelFormModif
-        methods: ['GET', 'POST']
 
 modifEmploye:
         path: /modifEmploye/{id}
