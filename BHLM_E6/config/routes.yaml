@@ -9,19 +9,11 @@ connexion:
         path: /
         controller: App\Controller\ConnexionController::appelConnexionForm
 
-#route de la page d'acceuil 
-accueil:
-        path: /accueil 
-        controller: App\Controller\AccueilController::Accueil 
-
-#route de la page vers les liens d'ajout
-ajout:
-        path: /ajout
-        controller: App\Controller\AjoutController::Lien
 #route de la page modification 
 modif:
         path: /modif
         controller: App\Controller\ModifController::appelFormModif
+
 #route de la page suppression
 # route pour afficher la page de confirmation
 suppr:
@@ -34,39 +26,3 @@ supprConfirm:
         path: /suppr/suppression/{id}
         controller: App\Controller\SuppressionController::suppression
         methods: [POST]
-
-
-#route de la page d'ajout d'entreprise
-ajoutEntreprise:
-        path: /ajoutEntreprise
-        controller: App\Controller\AjoutEntrepriseController::appelFormAjout
-
-#route de la page d'ajout d'employés
-ajoutEmploye:
-        path: /ajoutEmploye
-        controller: App\Controller\AjoutEmployeController::appelFormAjout
-
-#route de la page d'ajout d'étudiant
-ajoutEtudiant:
-        path: /ajoutEtudiant
-        controller: App\Controller\AjoutEtudiantController::appelFormAjout
-
-#route confirmation de l'ajout étudiant et redirection pour associer l'étudiant ou non à une entreprise
-ajoutConfirmation:
-        path: /confirmation
-        controller: App\Controller\AjoutEtudiantConfirmationController::Confirmation
-
-#route d'association étudiant entreprise
-assoEtudiantEntreprise:
-        path: /assoEtudiantEntreprise
-        controller: App\Controller\AssociationEtudiantEntrepriseController::appelFormAjout
-
-#route vers la page d'inscription
-inscription:
-        path: /inscription
-        controller: App\Controller\InscriptionController::appelForm
-
-#route pour la déconnexion de l'utilisateur
-deconnexion:
-    path: /deconnexion
-    controller: App\Controller\DeconnexionController::deconnexion
