@@ -14,6 +14,8 @@ modif:
         path: /modif/{id}
         controller: App\Controller\ModifController::appelFormModif
         methods: [GET]
+        requirements:
+                id: '\d+'
         
 
 modifEntreprise:
