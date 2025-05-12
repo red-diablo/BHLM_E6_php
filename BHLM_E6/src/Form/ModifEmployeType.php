@@ -37,5 +37,6 @@ class ModifEmployeType extends AbstractType {
                     'onclick' => 'window.location.href="/employes"'
                 ]
             ]);
+
     }
 }

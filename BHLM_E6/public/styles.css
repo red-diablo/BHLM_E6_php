@@ -94,6 +94,17 @@ header img {
   align-items: center !important;
 }
 
+/* STYLE DES AUTRES CARDS */
+
+.card-formulaire {
+  display: flex !important;
+  flex-direction: column !important;
+  justify-content: center !important;
+  align-items: center !important;
+  width: 100% !important;
+
+}
+
 /* STYLE DES BOUTONS  */
 
 .btn-connexion {
@@ -244,7 +255,7 @@ h2, h3 {
   border-radius: 2px !important;
   position: relative !important;
   box-shadow: 0 2px 10px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.1) !important;
-  color: #E9621D;
+  color: #E9621D !important;
   background-color: transparent !important;
   text-decoration: none !important;
   transition: 0.3s ease all !important;
@@ -326,6 +337,59 @@ p {
   margin-top: 1rem;
 }
 
+/* STYLE DE LA PAGE AJOUT */
+
+.btn-ajout {
+  font-family: 'Poppins', sans-serif !important;
+  font-size: 18px !important;
+  letter-spacing: 2px !important;
+  text-transform: uppercase !important;
+  display: inline-block !important;
+  text-align: center !important;
+  font-weight: bold !important;
+  padding: 0.6em 1.2em !important;
+  margin: 5px !important;
+  min-width: 600px !important;
+  border: 3px solid #04999E !important;
+  border-radius: 2px !important;
+  position: relative !important;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.1) !important;
+  color: #04999E !important;
+  background-color: transparent !important;
+  text-decoration: none !important;
+  transition: 0.3s ease all !important;
+  z-index: 1 !important;
+}
+
+.btn-ajout:before {
+  transition: 0.5s all ease !important;
+  position: absolute !important;
+  top: 0 !important;
+  left: 50% !important;
+  right: 50% !important;
+  bottom: 0 !important;
+  opacity: 0 !important;
+  content: '' !important;
+  background-color: #04999E !important;
+  z-index: -1 !important;
+}
+
+.btn-ajout:hover, .btn-ajout:focus {
+  color: white !important;
+}
+
+.btn-ajout:hover:before, .btn-ajout:focus:before {
+  transition: 0.5s all ease !important;
+  left: 0 !important;
+  right: 0 !important;
+  opacity: 1 !important;
+}
+
+.btn-ajout:active {
+  transform: scale(0.9) !important;
+}
+
+/* STYLE DU FOOTER */
 
 .footer-fixed {
   background-color: #36363b;
