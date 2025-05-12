@@ -159,6 +159,10 @@ header img {
   justify-content: flex-end;
 }
 
+.form-check-group label {
+  margin: 5px;
+}
+
 /* STYLE DES BOUTONS  */
 
 .btn-connexion {
