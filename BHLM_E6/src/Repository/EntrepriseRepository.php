@@ -26,22 +26,28 @@ class EntrepriseRepository extends ServiceEntityRepository
             ->getResult();
     }
 
-    public function search(string $motcle = '', ?int $secteurId = null): array
+    public function search(string $motcle = '', ?int $secteurId = null, string $critere = 'nom'): array
     {
         $qb = $this->createQueryBuilder('e');
 
-            if ($motcle) {
-                $qb->andWhere('e.nom LIKE :motcle OR e.ville LIKE :motcle')
-                ->setParameter('motcle', '%' . $motcle . '%');
+        if ($motcle) {
+            $allowedCriteria = ['nom', 'ville', 'cp'];
+            if (!in_array($critere, $allowedCriteria)) {
+                $critere = 'nom';
             }
 
-            if ($secteurId) {
-                $qb->andWhere('e.SecteurActivite = :secteur')
-                ->setParameter('secteur', $secteurId);
-            }
+            $qb->andWhere("e.$critere LIKE :motcle")
+            ->setParameter('motcle', '%' . $motcle . '%');
+        }
+
+        if ($secteurId) {
+            $qb->andWhere('e.SecteurActivite = :secteur')
+            ->setParameter('secteur', $secteurId);
+        }
 
         return $qb->getQuery()->getResult();
     }
+
 
 
     //    /**

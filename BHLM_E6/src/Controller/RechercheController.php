@@ -5,33 +5,40 @@ namespace App\Controller;
 use App\Entity\SecteurActivite;
 use App\Entity\Entreprise;
 use App\Repository\EntrepriseRepository;
+use App\Repository\SecteurActiviteRepository;
 use Doctrine\Persistence\ManagerRegistry;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
+use Symfony\Component\Routing\Annotation\Route;
 
 class RechercheController extends AbstractController
 {
+    #[Route(path: '/recherche', name: 'recherche')]
     public function recherche(ManagerRegistry $doctrine, Request $request): Response
     {
-        // Récupération des données du formulaire GET
         $motcle = $request->query->get('motcle', '');
         $secteurId = $request->query->get('secteur', '');
-        
-        $secteurId = $secteurId !== '' ? (int) $secteurId : null;        
+        $critere = $request->query->get('critere', 'nom');
+        $secteurSelectionne = $request->query->get('secteur', '');
+        if ($secteurSelectionne !== '') {
+            $secteurSelectionne = (string) $secteurSelectionne;
+        }
 
-        // Récupération des secteurs pour alimenter la liste déroulante
+        $secteurId = $secteurId !== '' ? (int) $secteurId : null;
+
         $secteurs = $doctrine->getRepository(SecteurActivite::class)->findAll();
 
-        // Récupération des entreprises filtrées
         $entrepriseRepo = $doctrine->getRepository(Entreprise::class);
-        $entreprises = $entrepriseRepo->search($motcle, $secteurId);
+        $entreprises = $entrepriseRepo->search($motcle, $secteurId, $critere);
 
         return $this->render('recherche.html.twig', [
             'secteurs' => $secteurs,
-            'entreprises' => $entreprises
-        ]);        
-    }  // Retourne la vue avec les résultats et les secteurs
+            'entreprises' => $entreprises,
+            'secteurSelectionne' => $secteurSelectionne
+        ]);
+
+    }
 
 }
 
