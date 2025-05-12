@@ -10,12 +10,16 @@ use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 use Symfony\Component\Form\Extension\Core\Type\SubmitType;
 use Symfony\Component\Form\Extension\Core\Type\ButtonType;
+use App\Entity\Profil;
+
 
 
 class ModifEntrepriseType extends AbstractType {
+    
+                 
     public function buildForm(FormBuilderInterface $builder, array $options): void
-    {
-        $builder
+{
+    $builder
         ->add('nom', TextType::class)
         ->add('adresse', TextType::class)
         ->add('ville', TextType::class)
@@ -25,6 +29,13 @@ class ModifEntrepriseType extends AbstractType {
             'choice_label' => 'nom',
             'placeholder' => '-- Sélectionner un secteur --',
         ])
+       ->add('profils', EntityType::class, [
+                'class' => Profil::class, 
+                'choice_label' => 'formation',  
+                'multiple' => true,  
+                'expanded' => true,  
+                'label' => 'Profils associés à l\'entreprise'  
+            ])
         ->add('submit', SubmitType::class, [
             'label' => 'Enregistrer',
             'attr' => ['class' => 'btn btn-success']
@@ -36,15 +47,8 @@ class ModifEntrepriseType extends AbstractType {
                 'onclick' => 'window.history.back()'
             ]
         ]);
-            
-            
-            
-    }
+}
 
-    public function configureOptions(OptionsResolver $resolver): void
-    {
-        $resolver->setDefaults([
-            'data_class' => Entreprise::class,
-        ]);
-    }
+
+    
 }

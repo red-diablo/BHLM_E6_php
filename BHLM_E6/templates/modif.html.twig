@@ -1,3 +1,4 @@
+
 <button>
     <a href="{{ path('modifEntreprise', {'id': entreprise.id}) }}">
         Modifier l'entreprise : {{ entreprise.nom }}
@@ -5,7 +6,7 @@
 </button>
 
 
-<p><button><a href="{{ path('ajout',{'id': entreprise.id}) }}">modification etudiant</a></button></p>
+<p><button><a href="{{ path('modifEtudiant',{'id': entreprise.id}) }}">modification etudiant</a></button></p>
 <p><button><a href="{{ path('modifEmploye',{'id': entreprise.id}) }}">modification tuteur </a></button></p>
 
 

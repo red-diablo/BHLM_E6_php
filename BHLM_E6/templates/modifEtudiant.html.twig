@@ -8,12 +8,13 @@
         <title>Ma Page Web</title>
         <link rel="stylesheet" href="styles.css">
     </head> #}
-    <h2>Modifier une entreprise</h2>
-
-
-{{ form(modifEntreprise) }}
     
+    
+    <h2> modifier les etudiant qui on fait des : {{ entreprise.nom }}</h2>
 
-{% for message in app.flashes('success') %}
-    <div class="alert alert-success">{{ message }}</div>
-{% endfor %}
+
+{{ form_start(form) }}
+    {{ form_row(form.etudiants) }}
+    {{ form_row(form.submit) }}
+    {{ form_row(form.cancel) }}
+{{ form_end(form) }}
