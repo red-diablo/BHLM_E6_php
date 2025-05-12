@@ -1,15 +1,5 @@
 {# _footer.html.twig #}
 
-{# {% if app.session.get('user_id') %}
-    <footer class="footer-connecte">
-      <p>&copy; {{ "now"|date("Y") }} - BHLM</p>
-    </footer>
-{% else %}
-    <footer class="footer-non-connecte">
-      <p>&copy; {{ "now"|date("Y") }} - BHLM</p>
-    </footer>
-{% endif %} #}
-
 {% set currentRoute = app.request.attributes.get('_route') %}
 
 <footer class="{% if currentRoute != 'accueil' %}footer-fixed{% else %}footer-non-fixed{% endif %}">
