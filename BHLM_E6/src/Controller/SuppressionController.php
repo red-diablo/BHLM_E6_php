@@ -11,7 +11,7 @@ class SuppressionController extends AbstractController
 {
     public function appelFormSuppression(Entreprise $entreprise): Response
     {
-        return $this->render('suppression.twig', [
+        return $this->render('suppression.html.twig', [
             'entreprise' => $entreprise,
         ]);
     }
