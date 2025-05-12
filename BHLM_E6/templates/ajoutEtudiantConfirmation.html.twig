@@ -1,6 +1,10 @@
- <h2>Etudiant.e ajouté avec succès !</h2>
+{% extends 'base.html.twig' %}
+
+{% block body %}
+<h2>Etudiant.e ajouté avec succès !</h2>
     
 <p>Voulez-vous associer cet étudiant à une entreprise ?</p>
 
 <a href="{{ path('assoEtudiantEntreprise') }}"><button type="submit">Oui</button></a>
 <a href="{{ path('accueil') }}"><button type="submit">Non</button></a>
+{% endblock %}

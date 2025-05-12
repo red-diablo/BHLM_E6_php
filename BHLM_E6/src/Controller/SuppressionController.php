@@ -2,9 +2,6 @@
 namespace App\Controller;
 
 use App\Entity\Entreprise;
-use App\Entity\Employe;
-use App\Form\SupprType;
-use Doctrine\Persistence\ManagerRegistry;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Doctrine\ORM\EntityManagerInterface;
@@ -14,7 +11,7 @@ class SuppressionController extends AbstractController
 {
     public function appelFormSuppression(Entreprise $entreprise): Response
     {
-        return $this->render('suppression.twig', [
+        return $this->render('suppression.html.twig', [
             'entreprise' => $entreprise,
         ]);
     }

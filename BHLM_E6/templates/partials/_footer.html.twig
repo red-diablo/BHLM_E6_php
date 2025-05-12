@@ -1,4 +1,7 @@
 {# _footer.html.twig #}
-<footer>
+
+{% set currentRoute = app.request.attributes.get('_route') %}
+
+<footer class="{% if currentRoute != 'accueil' %}footer-fixed{% else %}footer-non-fixed{% endif %}">
   <p>&copy; {{ "now"|date("Y") }} - BHLM</p>
 </footer>
