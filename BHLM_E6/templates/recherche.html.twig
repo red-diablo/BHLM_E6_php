@@ -1,0 +1,35 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+  <h2>Recherche avec filtre</h2>
+
+  <form method="get" action="{{ path('recherche') }}">
+    <div class="mb-3">
+      <label for="motcle" class="form-label">Mot-clé</label>
+      <input type="text" name="motcle" id="motcle" class="form-control" placeholder="Nom, Ville, etc.">
+    </div>
+    <div class="mb-3">
+      <label for="secteur" class="form-label">Secteur d'activité</label>
+      <select name="secteur" id="secteur" class="form-select">
+        <option value="">-- Tous --</option>
+        {% for secteur in secteurs %}
+          <option value="{{ secteur.id }}">{{ secteur.nom }}</option>
+        {% endfor %}
+      </select>
+    </div>
+    <button type="submit" class="btn btn-primary">Rechercher</button>
+  </form>
+
+  {% if entreprises is defined %}
+    <h3 class="mt-4">Résultats :</h3>
+    {% if entreprises|length == 0 %}
+      <p>Aucun résultat trouvé.</p>
+    {% else %}
+      <ul>
+        {% for entreprise in entreprises %}
+          <li>{{ entreprise.nom }} - {{ entreprise.ville }}</li>
+        {% endfor %}
+      </ul>
+    {% endif %}
+  {% endif %}
+{% endblock %}
