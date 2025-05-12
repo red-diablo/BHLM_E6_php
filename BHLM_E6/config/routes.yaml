@@ -16,21 +16,11 @@ modif:
         methods: [GET]
         requirements:
                 id: '\d+'
-        
-
-modifEntreprise:
-        path: /modifEntreprise/{id}
-        controller: App\Controller\ModifEntrepriseController::appelFormModif
-        methods: ['GET', 'POST']
 
 modifEmploye:
         path: /modifEmploye/{id}
         controller: App\Controller\ModifEmployeController::appelFormModif
-
-#route de la page d'ajout d'étudiant
-modifEtudiant:
-        path: /modifEtudiant
-        controller: App\Controller\ModifEtudiantController::appelFormModif
+        methods: ['GET', 'POST']
 
 #route de la page suppression
 # route pour supprimer 
