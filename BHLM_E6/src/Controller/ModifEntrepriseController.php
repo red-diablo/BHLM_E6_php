@@ -11,7 +11,7 @@ use Symfony\Component\Routing\Annotation\Route;
 
 class ModifEntrepriseController extends AbstractController
 {
-    #[Route('/entreprise/modifier/{id}', name: 'modif_entreprise')]
+    
     public function appelFormModif(int $id, Request $request, ManagerRegistry $doctrine): Response
     {
         $entreprise = $doctrine->getRepository(Entreprise::class)->find($id);

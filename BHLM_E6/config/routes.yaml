@@ -24,7 +24,6 @@ modif:
         path: /modif/{id}
         controller: App\Controller\ModifController::appelFormModif
         methods: [GET]
-        
 
 modifEntreprise:
         path: /modifEntreprise/{id}
@@ -34,11 +33,13 @@ modifEntreprise:
 modifEmploye:
         path: /modifEmploye/{id}
         controller: App\Controller\ModifEmployeController::appelFormModif
+        methods: ['GET', 'POST']
 
 #route de la page d'ajout d'étudiant
 modifEtudiant:
-        path: /modifEtudiant
-        controller: App\Controller\ModifEtudiantController::appelFormModif
+    path: /modifEtudiant/{id}
+    controller: App\Controller\ModifEtudiantController::modifierEtudiant
+
 
 
 
