@@ -53,19 +53,15 @@
           </div>
 
           <div class="d-flex mt-3 row-submit">
-            {{ form_row(modifEmploye.submit, {
-              attr: {'class': 'btn btn-icone btn-primary'}
-            }) }}
             {{ form_row(modifEmploye.cancel, {
               attr: {'class': 'btn btn-icone-suppr btn-primary'}
+            }) }}
+            {{ form_row(modifEmploye.submit, {
+              attr: {'class': 'btn btn-icone btn-primary'}
             }) }}
           </div>
 
           {{ form_end(modifEmploye) }}
-
-          {% for message in app.flashes('success') %}
-            <div class="alert alert-success mt-3">{{ message }}</div>
-          {% endfor %}
 
         </div>
       </div>
