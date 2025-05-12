@@ -11,15 +11,32 @@ connexion:
 
 #route de la page modification 
 modif:
-        path: /modif
+        path: /modif/{id}
         controller: App\Controller\ModifController::appelFormModif
+        methods: [GET]
+        
+
+modifEntreprise:
+        path: /modifEntreprise/{id}
+        controller: App\Controller\ModifEntrepriseController::appelFormModif
+        methods: ['GET', 'POST']
+
+modifEmploye:
+        path: /modifEmploye/{id}
+        controller: App\Controller\ModifEmployeController::appelFormModif
+
+#route de la page d'ajout d'étudiant
+modifEtudiant:
+        path: /modifEtudiant
+        controller: App\Controller\ModifEtudiantController::appelFormModif
 
 #route de la page suppression
-# route pour afficher la page de confirmation
+# route pour supprimer 
 suppr:
         path: /suppr/{id}
         controller: App\Controller\SuppressionController::appelFormSuppression
         methods: [GET]
+
 
 # route pour valider et exécuter la suppression
 supprConfirm:

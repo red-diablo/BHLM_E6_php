@@ -31,9 +31,7 @@ class SuppressionController extends AbstractController
             $entityManager->flush();    
     
             
-        } else {
-            $this->addFlash('impossible de supprimer.');
-        }
+        } 
 
         return $this->redirectToRoute('accueil');
     }
