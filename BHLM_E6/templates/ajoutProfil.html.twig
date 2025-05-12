@@ -1,7 +1,26 @@
-<h2>Ajouter un type de profil recherché pour une entreprise</h2>
 
-{{ form(ajoutProfilForm) }}
+{% extends 'base.html.twig' %}
 
-{% for message in app.flashes('success') %}
-    {{ message }}
-{% endfor %}
+{% block title %}Ajout{% endblock %}
+
+    
+{% block body %}
+  <div class="row justify-content-center">
+    <div class="col-md-6">
+      <div class="card shadow">
+        <div class="card-body card-connnexion">
+          <h2 class="mb-4 text-center">Ajout</h2>
+
+            <p>Ajouter un type de profil recherché pour une entreprise</p>
+
+            {{ form(ajoutProfilForm) }}
+
+            {% for message in app.flashes('success') %}
+                {{ message }}
+            {% endfor %}
+
+        </div>
+      </div>
+    </div>
+  </div>
+{% endblock %}

@@ -20,7 +20,7 @@ class ModifEmployeType extends AbstractType {
         ->add('tel', TextType :: class, ['label' => 'Téléphone'])
         ->add('idEntreprise',EntityType :: class, ['class' => Entreprise:: class, 'choice_label' => 'nom', 'required' => true, 'label' => 'Entreprise*'])
         ->add ('submit', SubmitType :: class, ['label' => 'Valider'])
-        ->add('cancel', ButtonType::class, ['label' => 'Annuler','attr' => ['onclick' => 'window.location.href="' . '/modif' . '"']]);
+        ->add('cancel', ButtonType::class, ['label' => 'Annuler et retourner à l\'accueil','attr' => ['onclick' => 'window.location.href="' . '/accueil' . '"']]);
     }
 }
 

@@ -8,14 +8,15 @@
         <div class="card-body card-connnexion">
           <h2 class="mb-4 text-center">Ajout</h2>
 
-            <a href="{{ path('ajoutEntreprise') }}" class="btn-icone">Ajouter une entreprise</a>
+            <a href="{{ path('ajoutEntreprise') }}" class="btn-ajout">Ajouter une entreprise</a>
 
-            <a href="{{ path('ajoutEmploye') }}" class="btn-icone">Ajouter un.e employé.e à une entreprise</a>
+            <a href="{{ path('ajoutEmploye') }}" class="btn-ajout">Ajouter un.e employé.e à une entreprise</a>
 
-            <a href="{{ path('ajoutEtudiant') }}" class="btn-icone">Ajouter un.e étudiant.e ayant effectué un stage dans une entreprise</a>
+            <a href="{{ path('ajoutEtudiant') }}" class="btn-ajout">Ajouter un.e étudiant.e ayant effectué un stage dans une entreprise</a>
             
-            <p>Ajouter un profil recherché par une entreprise : </p><button><a href="{{ path('ajoutProfil') }}">Ajouter</a></button>
-            <p>Associer une session d'examen à un employé qui est d'accord pour être jury : </p><button><a href="{{ path('ajoutSessionExam') }}">Ajouter</a></button>
+            <a href="{{ path('ajoutProfil') }}" class="btn-ajout">Ajouter un profil recherché par une entreprise</a>
+
+            <a href="{{ path('ajoutSessionExam') }}" class="btn-ajout">Ajouter un employé en tant que jury à une session d'examen</a>
 
             <br>
             <a href="{{ path('accueil') }}" class="btn-icone-suppr">Retour</a>
