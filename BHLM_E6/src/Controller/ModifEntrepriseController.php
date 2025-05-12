@@ -28,7 +28,7 @@ class ModifEntrepriseController extends AbstractController
             $this->addFlash('success', 'Entreprise modifiée avec succès.');
 
             
-            return $this->redirectToRoute('acceuil');
+            return $this->redirectToRoute('accueil');
         }
 
         return $this->render('modifEntreprise.html.twig', [
