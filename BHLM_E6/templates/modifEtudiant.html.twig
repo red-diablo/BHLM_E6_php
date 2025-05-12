@@ -9,12 +9,12 @@
         <link rel="stylesheet" href="styles.css">
     </head> #}
     
-    <h2>modifier  un/une étudiant/étudiante</h2>
     
+    <h2> modifier les etudiant qui on fait des stage chez  : {{ entreprise.nom }}</h2>
+
 
 {{ form_start(form) }}
-    {{ form_row(form.Etudiant) }}
-    {{ form_row(form.Entreprise) }}
+    {{ form_row(form.etudiants) }}
     {{ form_row(form.submit) }}
     {{ form_row(form.cancel) }}
 {{ form_end(form) }}

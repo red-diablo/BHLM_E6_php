@@ -1,8 +1,8 @@
 <?php
-
 namespace App\Controller;
-use App\Entity\Etudiant;
-use App\Form\AjoutEtudiantEntrepriseType;
+
+use App\Entity\Entreprise;
+use App\Form\ModifEtudiant;
 use Doctrine\Persistence\ManagerRegistry;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
@@ -14,34 +14,49 @@ class ModifEtudiantController extends AbstractController
     #[Route('/modifierEtudiant/{id}', name: 'modifier_etudiant')]
     public function modifierEtudiant(int $id, Request $request, ManagerRegistry $doctrine): Response
     {
-        // Formulaire sans entité liée car on va manipuler plusieurs entités manuellement
-        $form = $this->createForm(AjoutEtudiantEntrepriseType::class);
+        $em = $doctrine->getManager();
 
+        $entreprise = $em->getRepository(Entreprise::class)->find($id);
+
+        if (!$entreprise) {
+            throw $this->createNotFoundException('Entreprise non trouvée');
+        }
+
+        // Liste des étudiants actuellement associés
+        $etudiantsActuels = $entreprise->getEtudiants()->toArray();
+
+        // Crée un tableau pour le formulaire
+        $data = ['etudiants' => $etudiantsActuels];
+
+        $form = $this->createForm(ModifEtudiant::class, $data);
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
-            $data = $form->getData();
+            $donnees = $form->getData();
+            $etudiantsSelectionnes = $donnees['etudiants'];
 
-            /** @var Etudiant $etudiant */
-            $etudiant = $data['Etudiant'];
+            // Retirer les étudiants non sélectionnés
+            foreach ($etudiantsActuels as $etudiant) {
+                if (!in_array($etudiant, $etudiantsSelectionnes, true)) {
+                    $entreprise->removeEtudiant($etudiant);
+                }
+            }
 
-            /** @var \App\Entity\Entreprise $entreprise */
-            $entreprise = $data['Entreprise'];
+            // Ajouter les nouveaux étudiants
+            foreach ($etudiantsSelectionnes as $etudiant) {
+                $entreprise->addEtudiant($etudiant);
+            }
 
-            // Associer l'étudiant à l'entreprise
-            $entreprise->addEtudiant($etudiant);
-
-            $em = $doctrine->getManager();
-            $em->persist($etudiant);
+            $em->persist($entreprise);
             $em->flush();
 
-            $this->addFlash('success', 'Étudiant associé à l\'entreprise avec succès.');
-
-            return $this->redirectToRoute('accueil'); // ou autre route
+            $this->addFlash('success', 'Étudiants associés mis à jour avec succès.');
+            return $this->redirectToRoute('accueil');
         }
 
         return $this->render('modifEtudiant.html.twig', [
             'form' => $form->createView(),
+            'entreprise' => $entreprise,
         ]);
     }
 }
