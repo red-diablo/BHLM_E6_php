@@ -47,7 +47,7 @@
 {% if entreprises is defined %}
   <h3 class="mt-4">Résultats :</h3>
   {% if entreprises|length == 0 %}
-    <p>Aucun résultat trouvé.</p>
+    <p class="p-recherche">Aucun résultat trouvé.</p>
   {% else %}
     <ul class="list-group mt-2">
       {% for entreprise in entreprises %}

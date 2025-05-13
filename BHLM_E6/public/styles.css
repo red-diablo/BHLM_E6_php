@@ -452,6 +452,12 @@ p {
   transform: scale(0.9) !important;
 }
 
+/* STYLE SPECIFIQUE DE LA PAGE RECHERCHE */
+
+.p-recherche {
+  margin-bottom: 400px;
+}
+
 /* STYLE DU FOOTER */
 
 .footer-fixed {
