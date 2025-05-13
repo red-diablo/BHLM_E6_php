@@ -20,6 +20,11 @@ h1, h2, h3 {
   color: #333;
 }
 
+container .my-5{ 
+  margin-top: 1.5rem !important;
+  margin-bottom: 3rem !important;
+}
+
 
 /* STYLE DU HEADER */
 
@@ -31,7 +36,7 @@ header img {
 }
 
 .header-space {
-  width: 190px;
+  width: 320px;
 }
 
 .btn-deconnexion {
@@ -83,6 +88,55 @@ header img {
   transform: scale(0.9) !important;
 }
 
+.btn-accueil {
+  font-family: 'Poppins', sans-serif !important;
+  font-size: 14px !important;
+  letter-spacing: 2px !important;
+  text-transform: uppercase !important;
+  display: inline-block !important;
+  text-align: center !important;
+  font-weight: bold !important;
+  padding: 0.6em 1.2em !important;
+  margin: 5px !important;
+  border: 3px solid #04999E !important;
+  border-radius: 2px !important;
+  position: relative !important;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.1) !important;
+  color: #04999E !important;
+  background-color: transparent !important;
+  text-decoration: none !important;
+  transition: 0.3s ease all !important;
+  z-index: 1 !important;
+}
+
+.btn-accueil:before {
+  transition: 0.5s all ease !important;
+  position: absolute !important;
+  top: 0 !important;
+  left: 50% !important;
+  right: 50% !important;
+  bottom: 0 !important;
+  opacity: 0 !important;
+  content: '' !important;
+  background-color: #04999E !important;
+  z-index: -1 !important;
+}
+
+.btn-accueil:hover, .btn-accueil:focus {
+  color: white !important;
+}
+
+.btn-accueil:hover:before, .btn-accueil:focus:before {
+  transition: 0.5s all ease !important;
+  left: 0 !important;
+  right: 0 !important;
+  opacity: 1 !important;
+}
+
+.btn-accueil:active {
+  transform: scale(0.9) !important;
+}
+
 
 
 /* STYLE CONTAINER DE CONNEXION */
@@ -92,6 +146,26 @@ header img {
   flex-direction: column !important;
   justify-content: center !important;
   align-items: center !important;
+}
+
+/* STYLE DES AUTRES CARDS */
+
+.card-formulaire {
+  display: flex !important;
+  flex-direction: column !important;
+  justify-content: center !important;
+  align-items: center !important;
+  width: 100% !important;
+
+}
+
+.row-submit {
+  display: flex;
+  justify-content: flex-end;
+}
+
+.form-check-group label {
+  margin: 5px;
 }
 
 /* STYLE DES BOUTONS  */
@@ -244,7 +318,7 @@ h2, h3 {
   border-radius: 2px !important;
   position: relative !important;
   box-shadow: 0 2px 10px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.1) !important;
-  color: #E9621D;
+  color: #E9621D !important;
   background-color: transparent !important;
   text-decoration: none !important;
   transition: 0.3s ease all !important;
@@ -326,6 +400,65 @@ p {
   margin-top: 1rem;
 }
 
+/* STYLE DE LA PAGE AJOUT */
+
+.btn-ajout {
+  font-family: 'Poppins', sans-serif !important;
+  font-size: 18px !important;
+  letter-spacing: 2px !important;
+  text-transform: uppercase !important;
+  display: inline-block !important;
+  text-align: center !important;
+  font-weight: bold !important;
+  padding: 0.6em 1.2em !important;
+  margin: 5px !important;
+  min-width: 600px !important;
+  border: 3px solid #04999E !important;
+  border-radius: 2px !important;
+  position: relative !important;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.1) !important;
+  color: #04999E !important;
+  background-color: transparent !important;
+  text-decoration: none !important;
+  transition: 0.3s ease all !important;
+  z-index: 1 !important;
+}
+
+.btn-ajout:before {
+  transition: 0.5s all ease !important;
+  position: absolute !important;
+  top: 0 !important;
+  left: 50% !important;
+  right: 50% !important;
+  bottom: 0 !important;
+  opacity: 0 !important;
+  content: '' !important;
+  background-color: #04999E !important;
+  z-index: -1 !important;
+}
+
+.btn-ajout:hover, .btn-ajout:focus {
+  color: white !important;
+}
+
+.btn-ajout:hover:before, .btn-ajout:focus:before {
+  transition: 0.5s all ease !important;
+  left: 0 !important;
+  right: 0 !important;
+  opacity: 1 !important;
+}
+
+.btn-ajout:active {
+  transform: scale(0.9) !important;
+}
+
+/* STYLE SPECIFIQUE DE LA PAGE RECHERCHE */
+
+.p-recherche {
+  margin-bottom: 400px;
+}
+
+/* STYLE DU FOOTER */
 
 .footer-fixed {
   background-color: #36363b;

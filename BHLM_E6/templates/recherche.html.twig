@@ -1,0 +1,63 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Recherche{% endblock %}
+
+{% block body %}
+
+<h2 class="text-center mb-4">Recherche d'entreprises</h2>
+
+<form method="get" action="{{ path('recherche') }}" class="p-4 border rounded shadow-sm bg-light">
+
+  <div class="row mb-3">
+    <div class="col-md-4">
+      <label for="critere" class="form-label">Rechercher par</label>
+      <select name="critere" id="critere" class="form-select">
+        <option value="nom" {% if app.request.get('critere') == 'nom' %}selected{% endif %}>Nom</option>
+        <option value="ville" {% if app.request.get('critere') == 'ville' %}selected{% endif %}>Ville</option>
+        <option value="cp" {% if app.request.get('critere') == 'cp' %}selected{% endif %}>Code Postal</option>
+      </select>
+    </div>
+
+    <div class="col-md-8">
+      <label for="motcle" class="form-label">Mot-clé</label>
+      <input type="text" name="motcle" id="motcle" class="form-control"
+             value="{{ app.request.get('motcle') }}"
+             placeholder="Saisir le mot-clé">
+    </div>
+  </div>
+
+  <div class="mb-3">
+    <label for="secteur" class="form-label">Secteur d'activité</label>
+      <select name="secteur" id="secteur" class="form-select">
+        <option value="">-- Tous --</option>
+        {% for secteur in secteurs %}
+          <option value="{{ secteur.id }}"
+            {% if secteurSelectionne == secteur.id %}selected{% endif %}>
+            {{ secteur.nom }}
+          </option>
+        {% endfor %}
+      </select>
+  </div>
+
+  <div class="text-center">
+    <button type="submit" class="btn btn-primary btn-accueil">Rechercher</button>
+  </div>
+</form>
+
+{% if entreprises is defined %}
+  <h3 class="mt-4">Résultats :</h3>
+  {% if entreprises|length == 0 %}
+    <p class="p-recherche">Aucun résultat trouvé.</p>
+  {% else %}
+    <ul class="list-group mt-2">
+      {% for entreprise in entreprises %}
+        <li class="list-group-item">
+          <strong>{{ entreprise.nom }}</strong> - {{ entreprise.ville }}
+        </li>
+      {% endfor %}
+    </ul>
+  {% endif %}
+{% endif %}
+
+
+{% endblock %}

@@ -1,19 +1,70 @@
-{# <!DOCTYPE html>
-    <html lang="fr">
-    <head>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <meta name="description" content="Description de votre site">
-        <meta name="author" content="Votre Nom">
-        <title>Ma Page Web</title>
-        <link rel="stylesheet" href="styles.css">
-    </head> #}
-    <h2>Modifier une entreprise</h2>
+{% extends 'base.html.twig' %}
 
+{% block title %}Modification{% endblock %}
 
-{{ form(modifEntreprise) }}
-    
+{% block body %}
+  <div class="row justify-content-center">
+    <div class="col-md-8">
+      <div class="card shadow">
+        <div class="card-body card-formulaire">
+          <h2 class="mb-4 text-center">Modifier une entreprise</h2>
 
-{% for message in app.flashes('success') %}
-    <div class="alert alert-success">{{ message }}</div>
-{% endfor %}
+          {{ form_start(modifEntreprise) }}
+
+          <div class="row">
+            <div class="col-md-6">
+              {{ form_row(modifEntreprise.nom, {
+                attr: {'class': 'form-control'},
+                label_attr: {'class': 'form-label'}
+              }) }}
+            </div>
+            <div class="col-md-6">
+              {{ form_row(modifEntreprise.adresse, {
+                attr: {'class': 'form-control'},
+                label_attr: {'class': 'form-label'}
+              }) }}
+            </div>
+
+            <div class="col-md-6">
+              {{ form_row(modifEntreprise.ville, {
+                attr: {'class': 'form-control'},
+                label_attr: {'class': 'form-label'}
+              }) }}
+            </div>
+            <div class="col-md-6">
+              {{ form_row(modifEntreprise.CP, {
+                attr: {'class': 'form-control'},
+                label_attr: {'class': 'form-label'}
+              }) }}
+            </div>
+
+            <div class="col-md-12">
+              {{ form_row(modifEntreprise.secteurActivite, {
+                attr: {'class': 'form-select'},
+                label_attr: {'class': 'form-label'}
+              }) }}
+            </div>
+
+            <div class="col-md-12">
+              {{ form_row(modifEntreprise.profils, {
+                label_attr: {'class': 'form-label d-block'}
+              }) }}
+            </div>
+          </div>
+
+          <div class="d-flex mt-3 row-submit">
+            {{ form_row(modifEntreprise.cancel, {
+              attr: {'class': 'btn btn-icone-suppr btn-primary'}
+            }) }}
+            {{ form_row(modifEntreprise.submit, {
+              attr: {'class': 'btn btn-icone btn-primary'}
+            }) }}
+          </div>
+
+          {{ form_end(modifEntreprise) }}
+
+        </div>
+      </div>
+    </div>
+  </div>
+{% endblock %}

@@ -15,7 +15,7 @@ class AjoutEtudiantEntrepriseType extends AbstractType {
         $builder->add('Etudiant', EntityType :: class, ['class' => Etudiant:: class, 'choice_label' => 'nom', 'required' => true, 'label' => 'Etudiant :'])
         ->add('Entreprise',EntityType :: class, ['class' => Entreprise:: class, 'choice_label' => 'nom', 'required' => true, 'label' => 'Entreprise :'])
         ->add ('submit', SubmitType :: class, ['label' => 'Valider'])
-        ->add('cancel', ButtonType::class, ['label' => 'Annuler','attr' => ['onclick' => 'window.location.href="' . '/ajoutEtudiant' . '"']]);
+        ->add('cancel', ButtonType::class, ['label' => 'Retour','attr' => ['onclick' => 'window.location.href="' . '/ajout' . '"']]);
     }
 }
 
