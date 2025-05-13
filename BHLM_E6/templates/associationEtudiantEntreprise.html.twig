@@ -1,13 +1,45 @@
 {% extends 'base.html.twig' %}
 
+{% block title %}Association Étudiant/Entreprise{% endblock %}
+
 {% block body %}
-<h2>Associer un.e étudiant.e à l'entreprise dans laquelle il/elle a effectué un stage</h2>
+  <div class="row justify-content-center">
+    <div class="col-md-6">
+      <div class="card shadow">
+        <div class="card-body card-formulaire">
+          <h2 class="mb-4 text-center">Associer un·e étudiant·e à une entreprise</h2>
 
-{{ form(associationForm) }}
+          {{ form_start(associationForm) }}
 
-{% for message in app.flashes('success') %}
-    <div class="alert alert-success">
-        {{ message }}
+            {{ form_row(associationForm.Etudiant, {
+              attr: {'class': 'form-select'},
+              label_attr: {'class': 'form-label'}
+            }) }}
+
+            {{ form_row(associationForm.Entreprise, {
+              attr: {'class': 'form-select'},
+              label_attr: {'class': 'form-label'}
+            }) }}
+
+            <div class="d-flex mt-3 row-submit">
+                {{ form_row(associationForm.cancel, {
+                attr: {'class': 'btn btn-icone-suppr btn-primary'}
+                }) }}
+                {{ form_row(associationForm.submit, {
+                attr: {'class': 'btn btn-icone btn-primary'}
+                }) }}
+            </div>
+
+          {{ form_end(associationForm) }}
+
+          {% for message in app.flashes('success') %}
+            <div class="alert alert-success mt-3">
+              {{ message }}
+            </div>
+          {% endfor %}
+          
+        </div>
+      </div>
     </div>
-{% endfor %}
+  </div>
 {% endblock %}

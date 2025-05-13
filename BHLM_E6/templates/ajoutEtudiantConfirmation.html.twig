@@ -1,10 +1,21 @@
 {% extends 'base.html.twig' %}
 
-{% block body %}
-<h2>Etudiant.e ajouté avec succès !</h2>
-    
-<p>Voulez-vous associer cet étudiant à une entreprise ?</p>
+{% block title %}Confirmation ajout étudiant{% endblock %}
 
-<a href="{{ path('assoEtudiantEntreprise') }}"><button type="submit">Oui</button></a>
-<a href="{{ path('accueil') }}"><button type="submit">Non</button></a>
+{% block body %}
+  <div class="row justify-content-center">
+    <div class="col-md-8">
+      <div class="card shadow">
+        <div class="card-body text-center">
+          <h2 class="mb-4">Étudiant·e ajouté·e avec succès !</h2>
+          <p class="mb-4">Souhaitez-vous associer cet·te étudiant·e à une entreprise ?</p>
+
+          <div class="d-flex justify-content-center gap-3">
+            <a href="{{ path('assoEtudiantEntreprise') }}" class="btn btn-icone">Oui</a>
+            <a href="{{ path('accueil') }}" class="btn btn-icone-suppr">Non</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
 {% endblock %}
