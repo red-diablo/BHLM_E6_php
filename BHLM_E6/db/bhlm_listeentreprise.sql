@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Hôte : 127.0.0.1:3306
--- Généré le : lun. 28 avr. 2025 à 09:59
+-- Généré le : lun. 05 mai 2025 à 08:38
 -- Version du serveur : 8.3.0
 -- Version de PHP : 8.2.18
 
@@ -73,7 +73,7 @@ CREATE TABLE IF NOT EXISTS `employe` (
   `tel` varchar(20) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   PRIMARY KEY (`id`),
   KEY `IDX_F804D3B91A867E8F` (`id_entreprise_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=35 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=56 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
 -- Déchargement des données de la table `employe`
@@ -113,7 +113,28 @@ INSERT INTO `employe` (`id`, `id_entreprise_id`, `nom`, `prenom`, `fonction`, `m
 (31, 30, 'ALVES', 'David', 'Responsable adjoint informatique régionale', 'david.alves@carsat-normandie.fr', '02 35 03 60 59'),
 (32, 31, 'BERNIGAUD', 'Valérie', 'Chef de projet SI', 'valerie.bernigaud@normandie.cci.fr', NULL),
 (33, 25, 'DEMARLY', 'Antoine', 'Développeur', 'ademarly@cciproductions.fr', '02 32 09 42 18'),
-(34, 26, 'LE DENMAT', 'Jean-Marc', 'Directeur SI', 'jean-marc.le-denmat@chb-unicancer.fr', '02 32 08 22 09');
+(34, 26, 'LE DENMAT', 'Jean-Marc', 'Directeur SI', 'jean-marc.le-denmat@chb-unicancer.fr', '02 32 08 22 09'),
+(35, 27, 'LEFEBVRE', 'Jean-Luc', 'Responsable informatique', 'chef-de-projet.hop.gournay@orange.fr', NULL),
+(36, 28, 'LE CESNE', 'Noë', 'DSI', 'noe.lecesne@ch-havre.fr', NULL),
+(37, 29, 'REGNAULT', 'Vincent', NULL, 'vincent.regnault@ch-fecamp.fr', '02 35 10 91 01'),
+(38, 32, 'QUEVAL', 'Stephen', 'Tuteur', 'contact@cip76.com', NULL),
+(39, 33, 'GILLES', 'Frédéric', 'Responsable du Département Architecture Technique et Infrastructures', 'frederic.gilles@chu-rouen.fr', '02 32 88 88 40'),
+(40, 33, 'VICENTE', 'Emmanuel', 'DSI', 'emmanuel.vicente@chu-rouen.fr', '02 32 88 88 00'),
+(41, 33, 'BENARD', 'Wielfried', 'DSI', 'wilfrid.benard@chu-rouen.fr', '02 32 88 88 00'),
+(42, 34, 'OUALID', 'Rédha', 'Technicien informatique', 'redha.oualid@finances.gouv.fr', '01 53 94 13 31'),
+(43, 35, 'LARGUET', 'Nour-Eddine', 'Informaticien webmestre', 'nour-eddine.larguet@citesdesmetiershautenormandie.fr', NULL),
+(44, 36, 'MARY', 'Clément', NULL, 'clement.mary@fr.clara.net', '06 19 72 45 42'),
+(45, 37, 'LEBLANC', 'Jérémy', NULL, 'jeremy.leblanc@clinique-mathilde.fr', NULL),
+(46, 38, 'ZOUHEIR', 'Habanni', NULL, 'informatique@clinique-sainthilaire.fr', NULL),
+(47, 38, 'RAMDANI', NULL, NULL, 'aramdani@clinique-sainthilaire.fr', '02 35 08 66 79'),
+(48, 39, 'GUILLARD', 'Stéphane', NULL, 'sguillard@cma-normandie.fr', '06 15 45 73 41'),
+(49, 40, 'BORGIALI', NULL, NULL, 'dborgiali@cma-normandie.fr', '02 31 53 25 80'),
+(50, 41, 'FAREH', 'Fouad', 'Directeur Service Informatique', NULL, '02 32 50 85 60'),
+(51, 42, 'SALL', 'Hamédine', 'Directeur', 'contact@cslane.com', '06 36 05 60 95'),
+(52, 44, 'VICOMTE', 'Thierry', NULL, 'tvicomte@cusinesolutions.com', NULL),
+(53, 44, 'MOULEC', 'Stéphane', NULL, 'smoulec@cuisinesolutions.com', NULL),
+(54, 46, 'VALLET', 'Alexandre', NULL, 'dwk@deltawork.fr', NULL),
+(55, 47, 'THOREL', 'Baptiste', 'DSI et Responsable des projets agro-vétérinaire', 'baptiste.thorel@seinemaritime.fr', '02 35 63  66 78');
 
 -- --------------------------------------------------------
 
@@ -131,7 +152,7 @@ CREATE TABLE IF NOT EXISTS `entreprise` (
   `secteur_activite_id` int DEFAULT NULL,
   PRIMARY KEY (`id`),
   KEY `IDX_D19FA605233A7FC` (`secteur_activite_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=32 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=48 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
 -- Déchargement des données de la table `entreprise`
@@ -164,8 +185,26 @@ INSERT INTO `entreprise` (`id`, `nom`, `adresse`, `cp`, `ville`, `secteur_activi
 (24, 'Carrier Transicold industrie', '810 Route de Paris', '76520', 'Franqueville Saint-Pierre', 8),
 (25, 'CCI Productions', 'ZA des Patis', '27400', 'Acquiny', 8),
 (26, 'Centre Henri-Becquerel', 'Rue d\'Amiens - CS 11516', '76038', 'Rouen Cedex 1', 9),
+(27, 'Centre hospitalier de Gournay', '30 avenue de la première année Française', '76220', 'Gournay en Bray', 9),
+(28, 'Centre hospitalier du Havre', '55 bis rue Gustave Flaubert', '76083', 'Le Havre', 9),
+(29, 'Centre hospitalier intercommunal du Pays des Hautes Falaises', '100 avenue du Président François Mitterand', '76400', 'Fécamp', 9),
 (30, 'CARSAT Normandie', '5 Avenue du Grand Cours - CS 36028', '76028', 'Rouen Cedex 1', 8),
-(31, 'CCI Normandie', '10 quai de la Bourse', '76042', 'Rouen', 8);
+(31, 'CCI Normandie', '10 quai de la Bourse', '76042', 'Rouen', 8),
+(32, 'Centre informatique polyvalent', '37 quai Bérigny', '76400', 'Fécamp', 1),
+(33, 'CHU de Rouen', '1 rue de Germont', '76031', 'Rouen Cedex', 9),
+(34, 'CISIRH', '41-43 Bd Vincent Auriol', '75013', 'Paris', 1),
+(35, 'Cité des métiers de Haute-Normandie', '115 Bd de l\'Europe', '76100', 'Rouen', 8),
+(36, 'CLARANET SAS', '134 rue des Templiers', '59000', 'Lille', 1),
+(37, 'Clinique Mathilde', '7 Bd de l\'Europe', '76100', 'Rouen', 9),
+(38, 'Clinique Saint-Hilaire', '2 Pl Saint Hilaire', '76000', 'Rouen', 9),
+(39, 'CMA Normandie', '27 rue du 74e Régiment d\'infanterie', '76100', 'Rouen', 8),
+(40, 'CMA Normandie', '2 rue Claude Boch', '14000', 'Caen', 8),
+(41, 'Communauté d\'Agglomération Seine Eure', '1 Place Thorel - CS10514', '27405', 'Louviers', 8),
+(42, 'CS-LANE', '12 rue du 1er Mai', '76500', 'Elbeuf', 10),
+(44, 'Cuisines Solutions', '', '27400', 'Heudebouville', 11),
+(45, 'D.I.R.E.C.C.T.E de Normandie', '', '76000', 'Rouen', 8),
+(46, 'Deltawork (SSII)', '', '27110', 'Le Neubourg', 1),
+(47, 'Laboratoire agro-vétérinaire départemental', '9 Av. du Grand Cours - CS 51140', '76175', 'Rouen Cedex', 12);
 
 -- --------------------------------------------------------
 
@@ -183,7 +222,7 @@ CREATE TABLE IF NOT EXISTS `etudiant` (
   `specialite_id` int DEFAULT NULL,
   PRIMARY KEY (`id`),
   KEY `IDX_717E22E32195E0F0` (`specialite_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=11 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=12 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
 -- Déchargement des données de la table `etudiant`
@@ -193,7 +232,8 @@ INSERT INTO `etudiant` (`id`, `nom`, `prenom`, `annee`, `bts`, `specialite_id`) 
 (1, 'PONS', 'Tristan', 2023, 'BTS SIO', 1),
 (2, 'PUNTILLO', 'Anthony', 2023, 'BTS SIO', 2),
 (3, 'BOUKHORISSA', 'Bilal', 2023, 'BTS SIO', 1),
-(4, 'COEURDOUX', 'Carl', 2023, 'BTS SIO', NULL);
+(4, 'COEURDOUX', 'Carl', 2023, 'BTS SIO', 2),
+(11, '-yt(\'rtyh', 'u-yt(\'r', 2025, 'BTS SIO', 1);
 
 -- --------------------------------------------------------
 
@@ -217,7 +257,8 @@ CREATE TABLE IF NOT EXISTS `etudiant_entreprise` (
 INSERT INTO `etudiant_entreprise` (`etudiant_id`, `entreprise_id`) VALUES
 (1, 15),
 (2, 16),
-(3, 25);
+(3, 25),
+(4, 40);
 
 -- --------------------------------------------------------
 
@@ -276,11 +317,18 @@ INSERT INTO `profil_entreprise` (`profil_id`, `entreprise_id`) VALUES
 (1, 17),
 (1, 25),
 (1, 26),
+(1, 33),
+(1, 38),
+(1, 39),
 (2, 1),
 (2, 9),
 (2, 16),
 (2, 25),
 (2, 26),
+(2, 33),
+(2, 38),
+(2, 39),
+(2, 40),
 (3, 1),
 (3, 5),
 (3, 7),
@@ -291,11 +339,17 @@ INSERT INTO `profil_entreprise` (`profil_id`, `entreprise_id`) VALUES
 (3, 17),
 (3, 25),
 (3, 26),
+(3, 38),
+(3, 39),
 (4, 1),
 (4, 9),
 (4, 16),
 (4, 25),
 (4, 26),
+(4, 33),
+(4, 38),
+(4, 39),
+(4, 40),
 (5, 11),
 (5, 26),
 (6, 1),
@@ -315,7 +369,7 @@ CREATE TABLE IF NOT EXISTS `secteur_activite` (
   `id` int NOT NULL AUTO_INCREMENT,
   `nom` varchar(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=10 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=13 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
 -- Déchargement des données de la table `secteur_activite`
@@ -330,7 +384,10 @@ INSERT INTO `secteur_activite` (`id`, `nom`) VALUES
 (6, 'Batîment'),
 (7, 'Relations publiques'),
 (8, 'Services publics'),
-(9, 'Médecine');
+(9, 'Médecine'),
+(10, 'Transport'),
+(11, 'Agro-alimentaire'),
+(12, 'Agro-vétérinaire');
 
 -- --------------------------------------------------------
 
@@ -345,7 +402,7 @@ CREATE TABLE IF NOT EXISTS `session_exam` (
   `mois` varchar(30) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `annee` int DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
 -- Déchargement des données de la table `session_exam`
@@ -354,7 +411,8 @@ CREATE TABLE IF NOT EXISTS `session_exam` (
 INSERT INTO `session_exam` (`id`, `specialite`, `mois`, `annee`) VALUES
 (1, 'SLAM', 'juin', 2023),
 (2, NULL, 'juin', 2023),
-(3, 'SISR', NULL, 2022);
+(3, 'SISR', NULL, 2022),
+(4, NULL, NULL, 2023);
 
 -- --------------------------------------------------------
 
@@ -380,7 +438,8 @@ INSERT INTO `session_exam_employe` (`session_exam_id`, `employe_id`) VALUES
 (2, 18),
 (2, 20),
 (2, 33),
-(3, 34);
+(3, 34),
+(4, 49);
 
 -- --------------------------------------------------------
 
@@ -419,7 +478,7 @@ CREATE TABLE IF NOT EXISTS `utilisateur` (
   `nom` varchar(100) COLLATE utf8mb4_unicode_ci NOT NULL,
   `prenom` varchar(20) COLLATE utf8mb4_unicode_ci NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=10 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=11 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
 -- Déchargement des données de la table `utilisateur`
@@ -432,7 +491,8 @@ INSERT INTO `utilisateur` (`id`, `login`, `mdp`, `administrateur`, `personnel`, 
 (5, 'focba', '$2y$13$vPTQtgpuE9dRT49DIv.61uYrV9K3Yu2lxUuQFkkGxL4X4w6sCz3hK', 0, 1, 'Baranger', 'Catherine'),
 (6, 'bocba', '$2y$13$FXD2zxC2A28k2/UIIieAL.l.osMoL6rUULfe467lZ.JS7thOK9DjC', 1, 0, 'Baranger', 'Catherine'),
 (8, 'soso20', '$2y$13$11cj5.W6UUa2DRwJt1StBOe.tLk4vjLysQJu8ri0YPTnnQLOLjUvu', 0, 1, 'Langlois', 'Solène'),
-(9, 'adminSoso', '$2y$13$m8ez4LesiX0qDtleylumJur3zt8xvXxNlIW8FVzUqss8wnU4ckvpS', 1, 0, 'Langlois', 'Solène');
+(9, 'adminSoso', '$2y$13$m8ez4LesiX0qDtleylumJur3zt8xvXxNlIW8FVzUqss8wnU4ckvpS', 1, 0, 'Langlois', 'Solène'),
+(10, 'gnap', '$2y$13$vH8SZybo4e1uyk2JeSD0wuZJxehWbuL80lgIrvjtmqHRAo5M7JPZK', 0, 1, 'Wings', 'Gnap');
 
 --
 -- Contraintes pour les tables déchargées
